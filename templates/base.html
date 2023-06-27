@@ -28,61 +28,72 @@
     <title>Adela Valverde {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-  <!-- Header -->
-  <header  class="container-fluid fixed-top" id="header">
-    <nav class="navbar navbar-expand navbar-light">
-        <div>
-            <!-- Logo -->
-            <a class="navbar-brand" href="{% url 'home' %}">
+    <!-- Header -->
+    <header  class="container-fluid fixed-top" id="header">
+      <div class="row">
+        <!-- Logo -->
+        <div class="col-12 col-lg-6 navbar navbar-expand navbar-light">
+          <a class="navbar-brand" href="{% url 'home' %}">
             <h1 class="logo">Adela Valverde</h1>
-            </a>
+          </a>
         </div>
         <!-- Login and Shopping Bag -->
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-user-check"></i>{{ user.username }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i></a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-arrow-right"></i></a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-              <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-                <div><i class="fas fa-shopping-bag"></i>
-                  <p class="my-0">
-                    {% if grand_total %}
-                      ${{ grand_total|floatformat:2 }}
-                    {% else %}
-                    {% endif %}
-                  </p>
-                </div>
-              </a>
-            </li>
-          </ul>
+        <div class="col-12 col-lg-6">
+            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                <li class="list-inline-item dropdown">
+                    <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                            <p class="my-0">My Account</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                            {% endif %}
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        {% else %}
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        {% endif %}
+                    </div>
+                </li>
+                <li class="list-inline-item">
+                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+                        <div class="text-center">
+                            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                            <p class="my-0">
+                                {% if grand_total %}
+                                    ${{ grand_total|floatformat:2 }}
+                                {% else %}
+                                    $0.00
+                                {% endif %}
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-      <!-- Alerts from messages -->
+      </div>
+    </header>
+    <!-- Alerts from messages -->
     <div class="container alert-fixed">
       <div class="row">
-      <div class="col-md-8 offset-2">
-        {%  for message in messages %}
-        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-          {{message | safe }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="col-md-8 offset-2">
+          {%  for message in messages %}
+          <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+            {{message | safe }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
-      </div>
       </div>
     </div>
-      <!-- Main Menu -->
+    <!-- Main Menu -->
     <div class="row">
       <nav class="navbar navbar-expand-md main-nav col-md-8 offset-2">
           <button class="navbar-toggler dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
@@ -92,7 +103,7 @@
           {% include 'includes/main-nav.html' %}
       </nav>
     </div>
-  </header>
+  
 
     {% if messages %}
         <div class="messages-container"></div>
