@@ -1,0 +1,271 @@
+/* General ---------------------------------------*/
+html    {
+    height: 100%;
+}
+
+body {
+    color: #666666;
+    font-family: "inconsolata", sans-serif;
+    background-color: #ffffff;
+  }
+  
+a {
+    color: #666666;
+    text-decoration: none;
+  }
+  
+a:hover, a:active, a:focus {
+    color: #1770c9;
+    text-decoration: solid 1px #666666;
+    font-weight: bolder;
+  }
+  
+/* Menu ---------------------------------------*/
+
+#header {
+  background-color: #ffffff;
+}
+
+.logo {
+  margin: none;
+  padding: 15px;
+  color: #666666;
+}
+
+.navbar-nav {
+  display: block;
+  align-items: right;
+  justify-content:baseline;
+  color: #666666;
+}
+
+.nav-item {
+  display:inline-block;
+  margin: auto;
+  padding: 0 1rem;
+  color: #666666;
+}
+
+
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: none;
+    margin: none;
+    
+  }
+
+
+.navbar-nav .dropdown:hover > .dropdown-menu {
+  display: block;
+  color: blueviolet;
+}
+.dropdown-item:hover {
+  background-color:#6666664a;
+  color: #fff;
+}
+
+  /* .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #666666;
+    list-style: none;
+    background-color: red;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem; 
+}*/
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #666666;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+
+/* Homepage ---------------------------------------*/
+
+.homepage {
+  background-color: #6666664a;
+  background-image: url('/media/BGimg.jpg');
+  background-size: 80%;
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-position: left
+  color:#666666;
+  min-height: 90vh;
+  /* position: absolute; */
+}
+
+.main-content {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  text-align: right;
+  max-width: 40%;
+  height: 100px;
+
+}
+
+.my-heading {
+  font-size: 4rem;
+  /* font-weight: bold; */
+}
+
+.homepage .btn  {
+  font-size: 1em;
+  padding: 10px;
+  width: fit-content;
+  border: 0.5px solid #666666;
+}
+
+.btn:hover  {
+  background-color: #1770c9;
+  color: #fff;
+}
+
+
+/* Quien Soy ---------------------------------------*/
+
+.quiensoy {
+  height: 450px;
+  text-align: center;
+}
+
+.history-heading  {
+  height: 50px;
+  color: #666666;
+  margin: 20px;
+  position: relative;
+}
+
+.history-items  {
+  font-family: "inconsolata", sans-serif;
+  font-weight: 300;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  height: 450px;
+  overflow-y: scroll;
+}
+
+.timeline-item {
+  padding: 4em 2em 0em 2em;
+  position: relative;
+  color: #666666;
+  border-left: 1px solid #6666664a;
+}
+
+/* .timeline-item p {
+  padding: 0;
+  margin: 0;
+} */
+
+.timeline-item:before {
+  content: attr(data-dates);
+  position: absolute;
+  left: 2.5em;
+  top: 3em;
+  display: block;
+  font-family: "Exo", sans-serif;
+  font-weight: 500;
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item:after {
+  width: 12px;
+  height: 12px;
+  display: block;
+  top: 2.4em;
+  position: absolute;
+  left: -6px;
+  border-radius: 12px;
+  content: '';
+  background: #fafafa;
+}
+
+.description-box  {
+  overflow-y: scroll;
+  height: 380px;
+  text-align: left;
+  border-left: 1px solid #6666664a;
+  padding: 1em 2em 0em 2em;
+}
+
+#key-moment-image {
+  background-image: url(/media/quiensoy.jpg);
+  background-color: #6666664a;
+  background-size: cover;
+  /* background-blend-mode: multiply; */
+  background-repeat:no-repeat;
+  overflow: scroll;
+  height: 450px;
+  max-width: 300px;
+  border: solid 2px #ffffff;
+}
+
+/*---------------------------------------- Alerts */
+
+.alert-fixed {
+  position:absolute; 
+  top: 100px; 
+  left: 0; 
+  width: 100%;
+  z-index: 2000; 
+  border-radius:0px
+}
+
+
+
+/* Media Queries---------------------------------- */
+
+
+  @media (max-width: 576px) {
+    .main-content {
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      text-align: right;
+      max-width: 30%;
+    }
+        
+    .my-heading {
+        font-size: 2rem;
+    }
+
+    .my-subheading {
+        font-size: 1rem;
+    }
+
+    #my-content {
+        position: static;
+    }
+}
+
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .my-heading {
+      font-size: 3rem;
+  }
+
+  .my-subheading {
+      font-size: 1.25rem;
+  }
+
+  #my-content {
+      position: static;
+  }
+}
+
+
