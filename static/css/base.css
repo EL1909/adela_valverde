@@ -20,7 +20,7 @@ a:hover, a:active, a:focus {
   font-weight: bolder;
 }
   
-/* Menu ---------------------------------------*/
+/* Header ---------------------------------------*/
 
 #header {
   background-color: #ffffff;
@@ -46,13 +46,17 @@ a:hover, a:active, a:focus {
   padding: 30px 15px;
   color: #666666;
 }
-  
-.main-nav {
+
+/* Main Navigation ----------------------------*/
+
+#main-nav {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: none;
+  height: 25px;
+  padding: 5px;
   margin: none;
+  background-color: #666666;
 }
 
 
@@ -267,4 +271,10 @@ a:hover, a:active, a:focus {
   }
 }
 
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
 
