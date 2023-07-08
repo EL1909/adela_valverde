@@ -1,3 +1,19 @@
+adelavalverde.com v1
+
+This website is a personal blog for Adela Valverde.
+
+intended to handle her online activities,
+
+marketplace blog multimedia events -done and to do- registration and user accounts
+
+install Django
+create project
+install allauth
+add CSRF_TRUSTED_ORIGINS in settings.py, line 30
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome Efrain Luciano Fernandez Valverde,

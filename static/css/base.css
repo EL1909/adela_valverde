@@ -1,29 +1,30 @@
 /* General ---------------------------------------*/
 html    {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    color: #666666;
-    font-family: "inconsolata", sans-serif;
-    background-color: #ffffff;
-  }
+  color: #666666;
+  font-family: "inconsolata", sans-serif;
+  background-color: #ffffff;
+}
   
 a {
-    color: #666666;
-    text-decoration: none;
-  }
+  color: #666666;
+  text-decoration: none;
+}
   
 a:hover, a:active, a:focus {
-    color: #1770c9;
-    text-decoration: solid 1px #666666;
-    font-weight: bolder;
-  }
+  color: #1770c9;
+  text-decoration: solid 1px #666666;
+  font-weight: bolder;
+}
   
 /* Menu ---------------------------------------*/
 
 #header {
   background-color: #ffffff;
+  height: 100px;
 }
 
 .logo {
@@ -41,20 +42,18 @@ a:hover, a:active, a:focus {
 
 .nav-item {
   display:inline-block;
-  margin: auto;
-  padding: 0 1rem;
+  margin: none;
+  padding: 30px 15px;
   color: #666666;
 }
-
-
-  .main-nav {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: none;
-    margin: none;
-    
-  }
+  
+.main-nav {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: none;
+  margin: none;
+}
 
 
 .navbar-nav .dropdown:hover > .dropdown-menu {
