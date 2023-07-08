@@ -34,15 +34,16 @@ a:hover, a:active, a:focus {
 }
 
 .navbar-nav {
-  display: block;
+  display: inline-block;
   align-items: right;
-  justify-content:baseline;
+  justify-content: end;
   color: #666666;
 }
 
 .nav-item {
   display:inline-block;
   margin: none;
+  align-items: right;
   padding: 30px 15px;
   color: #666666;
 }
@@ -50,11 +51,11 @@ a:hover, a:active, a:focus {
 /* Main Navigation ----------------------------*/
 
 #main-nav {
-  display: flex;
+  display: inline-block;
   justify-content: center;
   text-align: center;
   height: 25px;
-  padding: 5px;
+  padding: 0 5px;
   margin: none;
   background-color: #666666;
 }
@@ -235,6 +236,10 @@ a:hover, a:active, a:focus {
 
 
   @media (max-width: 576px) {
+    h1  {
+      font-size: 2rem;
+    }  
+   
     .main-content {
       position: absolute;
       top: 30px;
