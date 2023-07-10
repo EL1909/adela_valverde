@@ -28,9 +28,9 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="container-fluid" id="header">
+    <header class="container-fluid">
       <!-- Top Bar -->
-      <div class="row">
+      <div class="row" id="topbar">
         <!-- Logo -->
         <div class="col-12 col-md-6">
           <a class="navbar-brand" href="{% url 'home' %}">
@@ -38,7 +38,7 @@
           </a>
         </div>
         <!-- Login and Shopping Bag -->
-        <div class="col-12 col-md-6 d-none d-md-flex justify-content-end">
+        <div class="col-12 col-md-6 d-none d-sm-flex justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item form-inline">
                   <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,17 +75,17 @@
              </ul>
         </div>
       </div>
-      <!-- Main Menu -->
-      <div class="row bg-white">
-        <nav class="navbar navbar-expand-md navbar-light w-100">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          {% include 'includes/mobile-top-header.html' %}
-          {% include 'includes/main-nav.html' %}
-        </nav>
-      </div>
     </header>
+          <!-- Main Menu -->
+          <div class="row" id="main-nav-container">
+            <nav class="navbar navbar-expand-sm">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span<i class="fa-solid fa-bars"></i></span>
+              </button>
+              {% include 'includes/mobile-top-header.html' %}
+              {% include 'includes/main-nav.html' %}
+            </nav>
+          </div>
     <!-- Alerts from messages -->
     <div class="container alert-fixed">
       <div class="row">

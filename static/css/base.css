@@ -23,26 +23,27 @@ a:hover, a:active, a:focus {
   
 /* Header ---------------------------------------*/
 
-#header {
+#topbar {
+  height: 75px;
   background-color: #ffffff;
-  height: 100px;
 }
 
 .logo {
   margin: none;
-  padding: 15px;
+  padding: 1rem;
   color: #666666;
 }
 
 .navbar-nav {
   display: inline-block;
   align-items: right;
-  height: 175px;
+  height: 25px;
   color: #666666;
 }
 
-.nav-item {
-  display:inline-block;
+#topbar .nav-item {
+  display: inline-block;
+  padding: 1.5rem 1rem;
   margin: none;
   align-items: right;
   padding: none;
@@ -51,6 +52,29 @@ a:hover, a:active, a:focus {
 
 /* Main Navigation ----------------------------*/
 
+#main-nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-nav {
+  background-color: #666666;
+  height: 25px;
+  max-width:fit-content;
+  border-radius: 25px;
+}
+
+#main-nav .nav-item {
+  display: inline-block;
+  align-items:center;
+  padding: 0 1rem;
+}
+
+#main-nav .nav-link {
+  display: inline;
+  color: #fafafa;
+}
 
 
 /* Homepage ---------------------------------------*/
@@ -193,8 +217,28 @@ a:hover, a:active, a:focus {
   @media (max-width: 576px) {
     h1  {
       font-size: 2.5rem;
-    }  
-   
+    }
+    
+    #main-nav {
+      min-width: 100%;
+    }
+
+    .logo {
+      padding: .5rem;
+    }
+
+    #main-nav .nav-item {
+      align-items:left;
+      text-align: justify;
+      padding: 1rem;
+      width: 100%;
+    }
+
+
+
+
+
+
     .main-content {
       position: absolute;
       top: 30px;
