@@ -20,7 +20,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Raleway:wght@300&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
@@ -33,13 +32,13 @@
       <!-- Top Bar -->
       <div class="row">
         <!-- Logo -->
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-6">
           <a class="navbar-brand" href="{% url 'home' %}">
             <h1 class="logo">Adela Valverde</h1>
           </a>
         </div>
         <!-- Login and Shopping Bag -->
-        <div class="col-12 col-lg-6 d-sm-none d-flex justify-content-end">
+        <div class="col-12 col-md-6 d-none d-md-flex justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item form-inline">
                   <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,8 +76,8 @@
         </div>
       </div>
       <!-- Main Menu -->
-      <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
+      <div class="row bg-white">
+        <nav class="navbar navbar-expand-md navbar-light w-100">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -87,8 +86,6 @@
         </nav>
       </div>
     </header>
-
-
     <!-- Alerts from messages -->
     <div class="container alert-fixed">
       <div class="row">
