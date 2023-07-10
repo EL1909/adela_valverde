@@ -24,7 +24,7 @@ a:hover, a:active, a:focus {
 /* Header ---------------------------------------*/
 
 #topbar {
-  height: 75px;
+  height: 100px;
   background-color: #ffffff;
 }
 
@@ -46,7 +46,6 @@ a:hover, a:active, a:focus {
   padding: 1.5rem 1rem;
   margin: none;
   align-items: right;
-  padding: none;
   color: #666666;
 }
 
@@ -56,6 +55,7 @@ a:hover, a:active, a:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 #main-nav {
@@ -85,8 +85,8 @@ a:hover, a:active, a:focus {
   background-size: 80%;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
-  background-position: left
-  color:#666666;
+  background-position: left;
+  color: #666666;
   min-height: 90vh;
   /* position: absolute; */
 }
@@ -218,23 +218,38 @@ a:hover, a:active, a:focus {
     h1  {
       font-size: 2.5rem;
     }
-    
-    #main-nav {
-      min-width: 100%;
-    }
 
     .logo {
       padding: .5rem;
     }
+    
+    #topbar {
+      height: 75px;
+    }
 
-    #main-nav .nav-item {
-      align-items:left;
-      text-align: justify;
-      padding: 1rem;
+    #main-nav-container {
       width: 100%;
     }
 
+    #main-nav-container .nav-item {
+      width: 100%;
+    }
 
+    #main-nav-container .nav-link{
+      width: 100%;
+    }
+
+    .navbar-collapse  {
+      width: 100%;
+      background-color: aqua;
+    }
+
+    #main-nav .navbar-collapse {
+      display:inline-block;
+      width: 100%;
+      background-color: aqua;
+    }
+    
 
 
 
