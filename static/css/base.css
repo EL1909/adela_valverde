@@ -227,34 +227,26 @@ a:hover, a:active, a:focus {
       height: 75px;
     }
 
-    #main-nav-container {
-      width: 100%;
+    .navbar li {
+      width:25%;
     }
 
-    #main-nav-container .nav-item {
-      width: 100%;
+    /* Inside hamburger menu */
+    .navbar-nav  {
+      display: flex;
+      background-color: #666666;
+      width:350px;
+      height: auto;
     }
 
-    #main-nav-container .nav-link{
-      width: 100%;
+    .navbar-nav li {
+      display: flex;
+      width: 200px;
     }
 
-    .navbar-collapse  {
-      width: 100%;
-      background-color: aqua;
-    }
-
-    #main-nav .navbar-collapse {
-      display:inline-block;
-      width: 100%;
-      background-color: aqua;
-    }
-    
 
 
-
-
-    .main-content {
+    /* .main-content {
       position: absolute;
       top: 30px;
       right: 20px;
@@ -272,7 +264,7 @@ a:hover, a:active, a:focus {
 
     #my-content {
         position: static;
-    }
+    } */
 }
 
 
