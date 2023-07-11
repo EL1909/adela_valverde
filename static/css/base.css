@@ -26,6 +26,7 @@ a:hover, a:active, a:focus {
 #topbar {
   height: 100px;
   background-color: #ffffff;
+  margin: 0%;
 }
 
 .logo {
@@ -34,11 +35,19 @@ a:hover, a:active, a:focus {
   color: #666666;
 }
 
+.logo h1  {
+  margin: 0;
+}
+
+#topbar .col-12 {
+  margin-bottom: 0;
+}
+
 .navbar-nav {
   display: inline-block;
   align-items: right;
   height: 25px;
-  color: #666666;
+  color: #666666;;
 }
 
 #topbar .nav-item {
@@ -54,26 +63,31 @@ a:hover, a:active, a:focus {
 #main-nav-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 0
 }
 
 #main-nav {
-  background-color: #666666;
+  background-color: #6666664a;
   height: 25px;
   max-width:fit-content;
   border-radius: 25px;
+  
 }
 
 #main-nav .nav-item {
   display: inline-block;
   align-items:center;
   padding: 0 1rem;
+  color: #666666;
 }
 
 #main-nav .nav-link {
   display: inline;
   color: #fafafa;
+  color: #666666;
 }
 
 
@@ -82,13 +96,13 @@ a:hover, a:active, a:focus {
 .homepage {
   background-color: #6666664a;
   background-image: url('/media/BGimg.jpg');
-  background-size: 80%;
+  background-size: 70%;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: left;
   color: #666666;
   min-height: 90vh;
-  /* position: absolute; */
+  margin-top: 0;
 }
 
 .main-content {
@@ -98,24 +112,22 @@ a:hover, a:active, a:focus {
   text-align: right;
   max-width: 40%;
   height: 100px;
-
 }
 
 .my-heading {
   font-size: 4rem;
-  /* font-weight: bold; */
 }
 
 .homepage .btn  {
   font-size: 1em;
   padding: 10px;
   width: fit-content;
-  border: 0.5px solid #666666;
 }
 
 .btn:hover  {
   background-color: #1770c9;
   color: #fff;
+  border: 0.5px solid #666666;
 }
 
 
@@ -231,10 +243,14 @@ a:hover, a:active, a:focus {
       width:25%;
     }
 
+    #main-nav-container {
+      flex-direction: row;
+    }
+
     /* Inside hamburger menu */
     .navbar-nav  {
       display: flex;
-      background-color: #666666;
+      background-color: #6666664a;
       width:350px;
       height: auto;
     }
@@ -244,14 +260,12 @@ a:hover, a:active, a:focus {
       width: 200px;
     }
 
-
-
-    /* .main-content {
+    .main-content {
       position: absolute;
-      top: 30px;
+      top: 20px;
       right: 20px;
       text-align: right;
-      max-width: 30%;
+      max-width: 50%;
     }
         
     .my-heading {
@@ -264,7 +278,12 @@ a:hover, a:active, a:focus {
 
     #my-content {
         position: static;
-    } */
+    }
+
+    .homepage {
+      background-size: 95%;
+      min-height: 90vh;
+    }
 }
 
 
