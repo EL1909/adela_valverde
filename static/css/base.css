@@ -96,7 +96,7 @@ a:hover, a:active, a:focus {
 .homepage {
   background-color: #6666664a;
   background-image: url('/media/BGimg.jpg');
-  background-size: 70%;
+  background-size: 50%;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: left;
@@ -129,6 +129,19 @@ a:hover, a:active, a:focus {
   color: #fff;
   border: 0.5px solid #666666;
 }
+
+/* Products ----------------------------------------*/
+
+.overlay  {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: #fafafa;
+  z-index: -1;
+}
+
 
 
 /* Quien Soy ---------------------------------------*/
