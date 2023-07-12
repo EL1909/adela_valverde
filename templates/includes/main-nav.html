@@ -8,10 +8,10 @@
         Mi Obra
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="mi-obra">
-        <a href="#" class="dropdown-item">Libros</a>
-        <a href="#" class="dropdown-item">Seminarios</a>
-        <a href="#" class="dropdown-item">Videos</a>
-        <a href="#" class="dropdown-item">Sesiones Privadas</a>
+        <a href="{% url 'products' %}?category=libros" class="dropdown-item">Libros</a>
+        <a href="{% url 'products' %}?category=seminarios" class="dropdown-item">Seminarios</a>
+        <a href="{% url 'products' %}?category=videos" class="dropdown-item">Videos</a>
+        <a href="{% url 'products' %}?category=sesiones" class="dropdown-item">Sesiones Privadas</a>
       </div>
     </li>
     <li class="nav-item dropdown">
@@ -19,7 +19,7 @@
         Apoya mi labor
       </a>
       <div class="dropdown-menu border-0" aria-labelledby="apoya-mi-labor">
-        <a href="#" class="dropdown-item">Articulos para meditar</a>
+        <a href="{% url 'products' %}?category=meditar" class="dropdown-item">Articulos para meditar</a>
         <a href="#" class="dropdown-item">Ropa</a>
         <a href="#" class="dropdown-item">Donaciones</a>
       </div>
