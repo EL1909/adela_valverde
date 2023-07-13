@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.views.generic.edit import CreateView
 from .models import Product, Category
+from .forms import ProductForm
 
 
 # Create your views here.
@@ -70,11 +72,21 @@ def product_detail(request, product_id):
 
     return render(request, 'products/product_detail.html', context)
 
+@login_required
+def add_product(request):
+    """ A View to create a new product """
+    if not request.user.is_superuser:
+        return redirect('home')
 
-class product_create_view(UserPassesTestMixin, CreateView):
-    model = Product
-    fields = ['category', 'name', 'description', 'price', 'image_url', 'image', 'created_by']
-    success_url = reverse_lazy('products')
-
-    def test_func(self):
-        return self.request.user.is_superuser  # Allow only superuser to access this view
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.created_by = request.user
+            product.save()
+            return redirect('product_detail', product_id=product.id)
+    else:
+        form = ProductForm()
+    
+    context = {'form': form}
+    return render(request, 'products/add_product.html', context)
