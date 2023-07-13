@@ -70,11 +70,20 @@ a:hover, a:active, a:focus {
 }
 
 #main-nav {
-  background-color: #6666664a;
+  /* background-color: #6666664a; */
   height: 25px;
   max-width:fit-content;
   border-radius: 25px;
-  
+  font-weight: 700;
+}
+
+a#main-nav {
+  font-weight: bolder;
+}
+
+a#main-nav:hover {
+  font-weight: bolder;
+  background-color: #666666;
 }
 
 #main-nav .nav-item {
@@ -120,8 +129,8 @@ a:hover, a:active, a:focus {
 
 .homepage .btn  {
   font-size: 1em;
-  padding: 10px;
-  width: fit-content;
+  padding: 5px;
+  width: max-content;
 }
 
 .btn:hover  {
@@ -140,6 +149,23 @@ a:hover, a:active, a:focus {
   position: fixed;
   background-color: #fafafa;
   z-index: -1;
+}
+
+a.category-badge > span.badge:hover {
+  background: #1770c9;
+  color: #fff;
+}
+
+.btt-button {
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.btt-link {
+  cursor: pointer;
 }
 
 
