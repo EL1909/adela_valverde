@@ -24,7 +24,8 @@ a:hover, a:active, a:focus {
 /* Header ---------------------------------------*/
 
 #topbar {
-  height: 100px;
+  position: relative;
+  height: 113px;
   background-color: #ffffff;
   margin: 0%;
 }
@@ -37,10 +38,6 @@ a:hover, a:active, a:focus {
 
 .logo h1  {
   margin: 0;
-}
-
-#topbar .col-12 {
-  margin-bottom: 0;
 }
 
 .navbar-nav {
@@ -61,19 +58,21 @@ a:hover, a:active, a:focus {
 /* Main Navigation ----------------------------*/
 
 #main-nav-container {
+  position: absolute;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 0
+  top: 80px;
+  z-index: 2;
 }
 
 #main-nav {
-  /* background-color: #6666664a; */
+  background-color: #6666664a;
   height: 25px;
   max-width:fit-content;
-  border-radius: 25px;
+  border-radius: 15px 15px 0 0;
   font-weight: 700;
 }
 
@@ -112,6 +111,7 @@ a#main-nav:hover {
   color: #666666;
   min-height: 90vh;
   margin-top: 0;
+  position: relative;
 }
 
 .main-content {
