@@ -156,7 +156,7 @@ a.category-badge > span.badge:hover {
   color: #fff;
 }
 
-.btt-button {
+.btn-button {
   height: 40px;
   width: 40px;
   position: fixed;
@@ -164,7 +164,7 @@ a.category-badge > span.badge:hover {
   right: 10px;
 }
 
-.btt-link {
+.btn-link {
   cursor: pointer;
 }
 
@@ -283,6 +283,8 @@ a.category-badge > span.badge:hover {
     }
 
     #main-nav-container {
+      position: relative;
+      top: 5px;
       flex-direction: row;
     }
 

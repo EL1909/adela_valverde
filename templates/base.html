@@ -49,10 +49,10 @@
                   <div class="dropdown-menu" aria-labelledby="user-options">
                     {% if request.user.is_authenticated %}
                       {% if request.user.is_superuser %}
-                        <a href="{% url 'add_product' %}" class="dropdown-item">Mi Perfil</a>
+                        <a href="{% url 'add_product' %}" class="dropdown-item">Deposito</a>
                       {% endif %}
-                    <a href="#" class="dropdown-item">My Profile</a>
-                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                    <a href="#" class="dropdown-item">Mi Perfil</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Salir</a>
                     {% else %}
                     <a href="{% url 'account_signup' %}" class="dropdown-item">Nuevo Usuario</a>
                     <a href="{% url 'account_login' %}" class="dropdown-item">Iniciar Sesion</a>
@@ -87,7 +87,7 @@
       </div>
     </header>
     <!-- Alerts from messages -->
-    <div class="container alert-fixed">
+    <div class="container alert-fixed text-end">
       <div class="row">
         <div class="col-md-8 offset-2">
           {%  for message in messages %}
