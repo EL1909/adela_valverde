@@ -21,18 +21,16 @@ class Category(models.Model):
         return self.friendly_name
 
 
-def generate_filename(instance, filename):
-    """
-    Generate a unique filename for the uploaded image.
-    """
+def product_image_upload_path(instance, filename):
+    # Generate a unique filename for the uploaded image.
     # Get the file extension from the original filename
     ext = os.path.splitext(filename)[1]
     # Generate a random alphanumeric string for the filename
     random_string = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
     # Concatenate the random string with the file extension
     unique_filename = f"{random_string}{ext}"
-    # Return the generated unique filename
-    return unique_filename
+    # Return the full upload path
+    return os.path.join('products', unique_filename)
 
 
 class Product(models.Model):
@@ -43,12 +41,12 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, upload_to=generate_filename)
+    image = models.ImageField(null=True, blank=True, upload_to=product_image_upload_path)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
-    
+
     def save(self, *args, **kwargs):
         # Generate a unique SKU if it doesn't exist
         if not self.sku:

@@ -65,6 +65,7 @@ a:hover, a:active, a:focus {
   align-items: center;
   width: 100%;
   top: 80px;
+  left: 200px;
   z-index: 2;
 }
 
@@ -80,8 +81,9 @@ a#main-nav {
   font-weight: bolder;
 }
 
-a#main-nav:hover {
+a #main-nav:hover {
   font-weight: bolder;
+  background-color: #fafafa;
   background-color: #666666;
 }
 
@@ -122,6 +124,15 @@ a#main-nav:hover {
   max-width: 40%;
   height: 100px;
 }
+
+/* #my-content {
+  background-image: url('/media/fondo-banner.png');
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: multiply;
+  color: #666666;
+} */
 
 .my-heading {
   font-size: 4rem;
@@ -267,25 +278,28 @@ a.category-badge > span.badge:hover {
 
   @media (max-width: 576px) {
     h1  {
-      font-size: 2.5rem;
-    }
-
-    .logo {
-      padding: .5rem;
+      font-size: 2rem;
     }
     
     #topbar {
+      position: relative;
       height: 75px;
+      top: 0;
     }
 
     .navbar li {
-      width:25%;
+      width: 20%;
     }
 
     #main-nav-container {
+      display: inline-block;
       position: relative;
-      top: 5px;
-      flex-direction: row;
+      top: 0;
+      left: 0;
+    }
+
+    .navbar-brand {
+      padding: none;
     }
 
     /* Inside hamburger menu */
@@ -297,7 +311,7 @@ a.category-badge > span.badge:hover {
     }
 
     .navbar-nav li {
-      display: flex;
+      display: inline-block;
       width: 200px;
     }
 
@@ -306,11 +320,11 @@ a.category-badge > span.badge:hover {
       top: 20px;
       right: 20px;
       text-align: right;
-      max-width: 50%;
+      width: 100%;
     }
         
     .my-heading {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .my-subheading {
@@ -323,7 +337,8 @@ a.category-badge > span.badge:hover {
 
     .homepage {
       background-size: 95%;
-      min-height: 90vh;
+      min-height: 75vh;
+      width: 100%;
     }
 }
 
