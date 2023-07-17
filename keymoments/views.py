@@ -9,7 +9,6 @@ def key_moments_list(request):
     """ A view to return the Key Moments page"""
 
     key_moments_list = key_moments.objects.all()
-    print(key_moments_list)
 
     return render(request, 'keymoments/keymoments.html', {'key_moments_list': key_moments_list})
 

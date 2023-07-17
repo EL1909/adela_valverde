@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
     <div class="row quiensoy">
-        <div class="col-4">
+        <div class="col-4 col-sm-6">
             <div class="row">
                 <div class="col-12 history-heading">
                     <h3 class="">Mi Camino</h3>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4" >
+        <div class="col-4 col-sm-6" >
             <div class="row">
                 <div class="col-12 history-heading">
                     <h3 id="key-moment-title">Descripcion</h3>
@@ -46,35 +46,16 @@
                 </div> 
             </div>
         </div>
-        <div class="col-4 d-xs-none" id="key-moment-image">
+        <div class="col-4 d-sm-none" id="key-moment-image">
+            <div id="image-frame">
+                <img id="resizable-image" src="" alt="" />
+            </div>
         </div>
     </div>
     <hr>
 </div>
 
-<script>
-$(document).ready(function() {
-    // handle click event on timeline items
-    $('.timeline-item').on('click', function() {
-        var selectedKeyMoment = $(this);
 
-        // Update the image and description in the first two columns
-        var backgroundImage = selectedKeyMoment.find('img').attr('src');
-        var description = selectedKeyMoment.find('.moment-description').text();
-        var title = selectedKeyMoment.find('h4').text();
-        var excerpt = selectedKeyMoment.find('.moment-excerpt').text();
-
-        // Update the background image of the div
-        $('#key-moment-image').css('background-image', 'url(' + backgroundImage + ')');
-        $('#key-moment-description').text(description);
-        $('#key-moment-title').text(title);
-        $('#key-moment-excerpt').text(excerpt);
-    
-        // Add active class to the selected timeline item
-        $('.timeline-item').removeClass('active');
-        selectedKeyMoment.addClass('active');
-        });
-    });
-</script>    
+<script src="{% static 'js/custom.js' %}"></script>
 
 {% endblock %}
