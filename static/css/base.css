@@ -16,9 +16,7 @@ a {
 }
   
 a:hover, a:active, a:focus {
-  color: #1770c9;
-  text-decoration: solid 1px #666666;
-  font-weight: bolder;
+  color: #7199d0;
 }
   
 /* Header ---------------------------------------*/
@@ -64,27 +62,17 @@ a:hover, a:active, a:focus {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  top: 80px;
+  top: 75px;
   left: 200px;
   z-index: 2;
 }
 
 #main-nav {
   background-color: #6666664a;
-  height: 25px;
+  height: 30px;
   max-width:fit-content;
   border-radius: 15px 15px 0 0;
   font-weight: 700;
-}
-
-a#main-nav {
-  font-weight: bolder;
-}
-
-a #main-nav:hover {
-  font-weight: bolder;
-  background-color: #fafafa;
-  background-color: #666666;
 }
 
 #main-nav .nav-item {
@@ -96,8 +84,15 @@ a #main-nav:hover {
 
 #main-nav .nav-link {
   display: inline;
-  color: #fafafa;
   color: #666666;
+  border-radius: 15px 15px 0 0;
+}
+
+#main-nav a:hover {
+  font-weight: 1.5rem;
+  color: #fafafa;
+  background-color: #6666664a;
+  
 }
 
 
@@ -145,7 +140,7 @@ a #main-nav:hover {
 }
 
 .btn:hover  {
-  background-color: #1770c9;
+  background-color: #7199d0;
   color: #fff;
   border: 0.5px solid #666666;
 }
@@ -296,6 +291,7 @@ a.category-badge > span.badge:hover {
       position: relative;
       top: 0;
       left: 0;
+      align-items:start;
     }
 
     .navbar-brand {
