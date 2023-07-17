@@ -24,6 +24,9 @@ def keymoment_image_upload_path(instance, filename):
 
 
 class key_moments(models.Model):
+    class Meta:
+        verbose_name_plural = 'Key Moments'
+
     title = models.CharField(max_length=128)
 
     def __str__(self):
@@ -75,7 +78,7 @@ class key_moments(models.Model):
     ]
 
     moment_type = models.CharField(
-        max_length=25,
+        max_length=30,
         choices=MOMENT_TYPE_CHOICES,
         default="UNKNOWN",
     )

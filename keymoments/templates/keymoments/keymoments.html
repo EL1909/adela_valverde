@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- Load jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row quiensoy">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12 history-heading">
+                    <h3 class="">Mi Camino</h3>
+                    <div class="history-items">
+                        {% for key_moment in key_moments_list %}
+                        <div class="timeline-item" data-dates="{{ key_moment.start_date }}">
+                            <a href="#">
+                                <h4>{{ key_moment.title }}</h4>
+                                <p>{{ key_moment.excerpt }}</p>
+                                <p class="moment-description" style="display: none;">{{ key_moment.description }}</p>
+                                <img src="{{ key_moment.image.url }}" alt="{{ imagepost.title }}" style="display: none;"></a>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <span>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'create_key_moment' %}"><button class="btn btn-secondary">Crear Momento</button></a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-4" >
+            <div class="row">
+                <div class="col-12 history-heading">
+                    <h3>Descripcion</h3>
+                </div>
+                <div class="col">
+                    <p class="description-box" id="key-moment-description">
+                        Gracias por tu interes en mi historia.
+                        Selecciona algun punto en mi camino para expandir.
+                    </p>
+                </div> 
+            </div>
+        </div>
+        <div class="col-4 d-xs-none" id="key-moment-image">
+        </div>
+    </div>
+    <hr>
+</div>
+
+<script>
+$(document).ready(function() {
+    // handle click event on timeline items
+    $('.timeline-item').on('click', function() {
+        var selectedKeyMoment = $(this);
+
+        // Update the image and description in the first two columns
+        var backgroundImage = selectedKeyMoment.find('img').attr('src');
+        var description = selectedKeyMoment.find('.moment-description').text();
+
+        // Update the background image of the div
+        $('#key-moment-image').css('background-image', 'url(' + backgroundImage + ')');
+        $('#key-moment-description').text(description);
+    
+        // Add active class to the selected timeline item
+        $('.timeline-item').removeClass('active');
+        selectedKeyMoment.addClass('active');
+        });
+    });
+</script>    
+
+{% endblock %}

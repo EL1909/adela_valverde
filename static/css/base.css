@@ -60,10 +60,10 @@ a:hover, a:active, a:focus {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: right;
   width: 100%;
   top: 75px;
-  left: 200px;
+  right: 0;
   z-index: 2;
 }
 
@@ -101,7 +101,7 @@ a:hover, a:active, a:focus {
 .homepage {
   background-color: #6666664a;
   background-image: url('/media/BGimg.jpg');
-  background-size: 50%;
+  background-size:contain;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: left;
@@ -187,7 +187,6 @@ a.category-badge > span.badge:hover {
   height: 50px;
   color: #666666;
   margin: 20px;
-  position: relative;
 }
 
 .history-items  {
@@ -195,7 +194,7 @@ a.category-badge > span.badge:hover {
   font-weight: 300;
   margin-top: 25px;
   margin-bottom: 20px;
-  height: 450px;
+  height:auto;
   overflow-y: scroll;
 }
 
@@ -238,7 +237,8 @@ a.category-badge > span.badge:hover {
 
 .description-box  {
   overflow-y: scroll;
-  height: 380px;
+  height:fit-content;
+  font-size: 1.25rem;
   text-align: left;
   border-left: 1px solid #6666664a;
   padding: 1em 2em 0em 2em;
