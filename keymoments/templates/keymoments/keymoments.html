@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-<!-- Load jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 {% block page_header %}
 {% endblock %}
 
@@ -20,7 +17,7 @@
                         <div class="timeline-item" data-dates="{{ key_moment.start_date }}">
                             <a href="#">
                                 <h4>{{ key_moment.title }}</h4>
-                                <p>{{ key_moment.excerpt }}</p>
+                                <p class="moment-excerpt">{{ key_moment.excerpt }}</p>
                                 <p class="moment-description" style="display: none;">{{ key_moment.description }}</p>
                                 <img src="{{ key_moment.image.url }}" alt="{{ imagepost.title }}" style="display: none;"></a>
                             </a>
@@ -28,9 +25,9 @@
                         {% endfor %}
                     </div>
                     <span>
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'create_key_moment' %}"><button class="btn btn-secondary">Crear Momento</button></a>
-                    {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'create_key_moment' %}"><i class="fa-solid fa-plus"></i></a>
+                        {% endif %}
                     </span>
                 </div>
             </div>
@@ -38,7 +35,8 @@
         <div class="col-4" >
             <div class="row">
                 <div class="col-12 history-heading">
-                    <h3>Descripcion</h3>
+                    <h3 id="key-moment-title">Descripcion</h3>
+                    <p id="key-moment-excerpt">Bienvenido</p>
                 </div>
                 <div class="col">
                     <p class="description-box" id="key-moment-description">
@@ -63,10 +61,14 @@ $(document).ready(function() {
         // Update the image and description in the first two columns
         var backgroundImage = selectedKeyMoment.find('img').attr('src');
         var description = selectedKeyMoment.find('.moment-description').text();
+        var title = selectedKeyMoment.find('h4').text();
+        var excerpt = selectedKeyMoment.find('.moment-excerpt').text();
 
         // Update the background image of the div
         $('#key-moment-image').css('background-image', 'url(' + backgroundImage + ')');
         $('#key-moment-description').text(description);
+        $('#key-moment-title').text(title);
+        $('#key-moment-excerpt').text(excerpt);
     
         // Add active class to the selected timeline item
         $('.timeline-item').removeClass('active');
