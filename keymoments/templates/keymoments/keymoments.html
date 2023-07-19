@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="container-fluid">
-    <div class="row quiensoy">
-        <div class="col-4 col-sm-6">
-            <div class="row">
-                <div class="col-12 history-heading">
-                    <h3 class="">Mi Camino</h3>
+    <div class="row">
+        <div class="col-md-4 col-lg-3 order-2">
+            <div class="row quiensoy">
+                <div class="col-12">
+                    <h3 class="history-heading">Mi Camino</h3>
                     <div class="history-items">
                         {% for key_moment in key_moments_list %}
                         <div class="timeline-item" data-dates="{{ key_moment.start_date }}">
@@ -19,7 +18,7 @@
                                 <h4>{{ key_moment.title }}</h4>
                                 <p class="moment-excerpt">{{ key_moment.excerpt }}</p>
                                 <p class="moment-description" style="display: none;">{{ key_moment.description }}</p>
-                                <img src="{{ key_moment.image.url }}" alt="{{ imagepost.title }}" style="display: none;"></a>
+                                <img src="{{ key_moment.image.url }}" alt="{{ imagepost.title }}" style="display: none;">
                             </a>
                         </div>
                         {% endfor %}
@@ -32,30 +31,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 col-sm-6" >
+        <div class="col-md-4 col-lg-6 order-1">
             <div class="row">
                 <div class="col-12 history-heading">
                     <h3 id="key-moment-title">Descripcion</h3>
                     <p id="key-moment-excerpt">Bienvenido</p>
                 </div>
-                <div class="col">
+                <div class="col-12">
                     <p class="description-box" id="key-moment-description">
-                        Gracias por tu interes en mi historia.
-                        Selecciona algun punto en mi camino para expandir.
+                        Gracias por tu interés en mi historia.
+                        Selecciona algún punto en mi camino para expandir.
                     </p>
-                </div> 
+                </div>
             </div>
         </div>
-        <div class="col-4 d-sm-none" id="key-moment-image">
-            <div id="image-frame">
-                <img id="resizable-image" src="" alt="" />
-            </div>
+        <div class="col-md-4 col-lg-3 d-none d-md-block order-3" id="key-moment-image">
+            <img id="resizable-image" src="" alt="" />
         </div>
     </div>
     <hr>
 </div>
 
-
 <script src="{% static 'js/custom.js' %}"></script>
-
 {% endblock %}

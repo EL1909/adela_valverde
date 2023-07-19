@@ -7,11 +7,13 @@ $(document).ready(function() {
         var backgroundImage = selectedKeyMoment.find('img').attr('src');
         var description = selectedKeyMoment.find('.moment-description').text();
         var title = selectedKeyMoment.find('h4').text();
+        var excerpt = selectedKeyMoment.find('.moment-excerpt').text();
 
         // Update the background image of the div
         $('#key-moment-image').css('background-image', 'url(' + backgroundImage + ')');
         $('#key-moment-description').text(description);
         $('#key-moment-title').text(title);
+        $('#key-moment-excerpt').text(excerpt);
 
         // Reset the size and position of the image within the frame
         $('#resizable-image').css({
@@ -28,7 +30,7 @@ $(document).ready(function() {
         // Initialize the resizable and draggable features for the image
         $('#resizable-image').resizable({
             aspectRatio: true, // Lock aspect ratio when resizing
-            containment: '#image-frame', // Restrict resizing within the frame
+            containment: '#key-moment-image', // Restrict resizing within the frame
         });
 
         $('#resizable-image').draggable({

@@ -176,10 +176,9 @@ a.category-badge > span.badge:hover {
 
 
 
-/* Quien Soy ---------------------------------------*/
+/* Key Moments -----------------------------------*/
 
 .quiensoy {
-  height: 450px;
   text-align: left;
 }
 
@@ -246,9 +245,7 @@ a.category-badge > span.badge:hover {
 
 #key-moment-image {
   background-image: url(/media/quiensoy.jpg);
-  background-color: #6666664a;
   background-size: cover;
-  /* background-blend-mode: multiply; */
   background-repeat:no-repeat;
   overflow: scroll;
   height: 450px;
