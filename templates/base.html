@@ -145,6 +145,20 @@
         alert.close();
       }, 3420);
     </script>
+    <!-- Main nav behivor-->
+    <script>
+      $(document).ready(function()  {
+        // toggle the menu's visibility on hover
+        $('#main-nav-container').hover(
+          function()  {
+            $(this).css('opacity','1'); // Set opacity 1 on hover to show the text
+          },
+          // function()  {
+          //   $(this).css('opacity', '0'); // Set opacity 0 on hover to hide the text
+          // }
+        );
+      });
+    </script>
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/5c47144494.js" crossorigin="anonymous"></script>
     {% endblock %}

@@ -60,11 +60,17 @@ a:hover, a:active, a:focus {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: right;
-  width: 100%;
-  top: 75px;
+  align-items: center;
+  top: 100px;
   right: 0;
   z-index: 2;
+  overflow: hidden;
+  background-color: #666666;
+  border-radius: 15px 15px 0 0;
+  height: 0.25px;
+  width: fit-content;
+  opacity: 1;
+  transition: height 0.3s ease;
 }
 
 #main-nav {
@@ -73,12 +79,13 @@ a:hover, a:active, a:focus {
   max-width:fit-content;
   border-radius: 15px 15px 0 0;
   font-weight: 700;
+  display: none;
+  padding: 0 1rem;
 }
 
 #main-nav .nav-item {
   display: inline-block;
   align-items:center;
-  padding: 0 1rem;
   color: #666666;
 }
 
@@ -86,15 +93,26 @@ a:hover, a:active, a:focus {
   display: inline;
   color: #666666;
   border-radius: 15px 15px 0 0;
+  padding: 0 1rem;
+  line-height: 2px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 #main-nav a:hover {
   font-weight: 1.5rem;
   color: #fafafa;
   background-color: #6666664a;
-  
 }
 
+#main-nav-container:hover {
+  /* Change the height and opacity on hover to show the full menu */
+  height: 30px;
+}
+
+#main-nav-container:hover #main-nav {
+  display: block; /* Show the #main-nav links on hover */
+}
 
 /* Homepage ---------------------------------------*/
 
