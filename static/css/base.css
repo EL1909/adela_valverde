@@ -38,12 +38,11 @@ a:hover, a:active, a:focus {
   margin: 0;
 }
 
-.navbar-nav {
+/* .navbar-nav {
   display: inline-block;
   align-items: right;
-  height: 25px;
   color: #fff;
-}
+} Confirma si el comportamiento esta repetido, */
 
 #topbar .nav-item {
   display: inline-block;
@@ -59,36 +58,37 @@ a:hover, a:active, a:focus {
   position: absolute;
   display: flex;
   justify-content: center;
-  align-items: center; /* Corrected from "align-items: right;" */
+  align-items: center;
   width: fit-content;
-  top: 98px;
-  right: 20%;
+  bottom: auto;
+  left: 50%;
   z-index: 2;
   background-color: #666666;
   height: 1px;
   opacity: 1;
-  border-radius: 15px 15px 0 0;
+  /* border-radius: 15px 15px 0 0; */
+  transform: translateX(-50%) translateY(-90%); /* Center the container relative to its own width */
+  transform-origin: bottom;
+  transition: height 0.5s ease;
 }
 
 #main-nav {
   max-width: fit-content;
   font-weight: 700;
-  padding: 0 1rem;
   display: flex;
-  gap: 1rem;
   opacity: 0;
   transition: opacity 0.5s ease;
-  pointer-events: none; /* Hide the menu from mouse events */
+  white-space: nowrap;
 }
 
 #main-nav-container:hover #main-nav {
   opacity: 1; /* Show the menu items when hovering the container */
+  pointer-events: auto;
 }
 
 .navbar-nav {
   display: inline-block;
   align-items: right;
-  height: 25px;
   color: #fff;
   position: relative; /* Add this to enable absolute positioning of #main-nav */
 }
@@ -111,7 +111,7 @@ a:hover, a:active, a:focus {
 }
 
 #main-nav-container:hover {
-  height: 160px; /* Change the height on hover to show the full menu */
+  height: 30px; /* Change the height on hover to show the full menu */
 }
 
 
@@ -305,9 +305,6 @@ a.category-badge > span.badge:hover {
 
     #main-nav-container {
       display: inline-block;
-      position: relative;
-      top: 0;
-      left: 0;
       align-items:start;
     }
 
@@ -316,17 +313,17 @@ a.category-badge > span.badge:hover {
     }
 
     /* Inside hamburger menu */
-    /* .navbar-nav  {
+    .navbar-nav  {
       display: flex;
       background-color: #6666664a;
       width:350px;
       height: auto;
-    } */ */
+    }
  
-    /* .navbar-nav li {
+    .navbar-nav li {
       display: inline-block;
       width: 200px;
-    } */
+    }
 
     .main-content {
       position: absolute;
