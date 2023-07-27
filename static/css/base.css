@@ -42,7 +42,7 @@ a:hover, a:active, a:focus {
   display: inline-block;
   align-items: right;
   height: 25px;
-  color: #666666;;
+  color: #fff;
 }
 
 #topbar .nav-item {
@@ -59,60 +59,62 @@ a:hover, a:active, a:focus {
   position: absolute;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  top: 100px;
-  right: 0;
-  z-index: 2;
-  overflow: hidden;
-  background-color: #666666;
-  border-radius: 15px 15px 0 0;
-  height: 0.25px;
+  align-items: center; /* Corrected from "align-items: right;" */
   width: fit-content;
+  top: 98px;
+  right: 20%;
+  z-index: 2;
+  background-color: #666666;
+  height: 1px;
   opacity: 1;
-  transition: height 0.3s ease;
+  border-radius: 15px 15px 0 0;
 }
 
 #main-nav {
-  background-color: #6666664a;
-  height: 30px;
-  max-width:fit-content;
-  border-radius: 15px 15px 0 0;
+  max-width: fit-content;
   font-weight: 700;
-  display: none;
   padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none; /* Hide the menu from mouse events */
+}
+
+#main-nav-container:hover #main-nav {
+  opacity: 1; /* Show the menu items when hovering the container */
+}
+
+.navbar-nav {
+  display: inline-block;
+  align-items: right;
+  height: 25px;
+  color: #fff;
+  position: relative; /* Add this to enable absolute positioning of #main-nav */
 }
 
 #main-nav .nav-item {
   display: inline-block;
-  align-items:center;
-  color: #666666;
+  align-items: center;
+  color: #fff;
 }
 
 #main-nav .nav-link {
   display: inline;
-  color: #666666;
-  border-radius: 15px 15px 0 0;
+  color: #fff;
   padding: 0 1rem;
-  line-height: 2px;
-  opacity: 1;
-  transition: opacity 0.3s ease;
 }
 
 #main-nav a:hover {
-  font-weight: 1.5rem;
   color: #fafafa;
   background-color: #6666664a;
 }
 
 #main-nav-container:hover {
-  /* Change the height and opacity on hover to show the full menu */
-  height: 30px;
+  height: 160px; /* Change the height on hover to show the full menu */
 }
 
-#main-nav-container:hover #main-nav {
-  display: block; /* Show the #main-nav links on hover */
-}
+
 
 /* Homepage ---------------------------------------*/
 
@@ -314,17 +316,17 @@ a.category-badge > span.badge:hover {
     }
 
     /* Inside hamburger menu */
-    .navbar-nav  {
+    /* .navbar-nav  {
       display: flex;
       background-color: #6666664a;
       width:350px;
       height: auto;
-    }
-
-    .navbar-nav li {
+    } */ */
+ 
+    /* .navbar-nav li {
       display: inline-block;
       width: 200px;
-    }
+    } */
 
     .main-content {
       position: absolute;
