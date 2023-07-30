@@ -25,7 +25,8 @@
                     </div>
                     <span>
                         {% if request.user.is_authenticated %}
-                        <a href="{% url 'create_key_moment' %}"><i class="fa-solid fa-plus"></i></a>
+                        <a href="#" id="create-new-moment"><i class="fa-solid fa-plus"></i></a>
+                        {% include 'keymoments/modal.html' %}
                         {% endif %}
                     </span>
                 </div>
