@@ -3,19 +3,58 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create New Moment</h5>
+                <h5 class="modal-title">Nuevo Momento</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="new-moment-form">
+                <form id="new-moment-form" enctype="multipart/form-data">
                     <!-- Add input fields and textareas to capture the new moment details -->
                     <div class="form-group">
-                        <label for="title">Title</label>
+                        <label for="title">Titulo</label>
                         <input type="text" class="form-control" id="title" name="title" required>
+                        <label for="excerpt">Sub-titulo</label>
+                        <input type="text" class="form-control" id="excerpt" name="excerpt" required>
                     </div>
-                    <!-- Add other input fields and textareas for description, excerpt, and image -->
-                    <!-- ... -->
-                    <button type="submit" class="btn btn-primary">Create Moment</button>
+                    <div class="form-group">
+                        <label for="description">Descripción</label>
+                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="moment_image">Imagen</label>
+                        <input type="file" class="form-control-file" id="moment_image" name="image" accept="image/*">
+                        <div class="cropper-container">
+                            <img id="cropper-image" src="#" alt="Preview">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="moment_type">Tipo de Momento</label>
+                        <select class="form-control" id="moment_type" name="moment_type">
+                            <option value="UNKNOWN">Desconocido</option>
+                            <optgroup label="Social">
+                                <option value="birth">Nacimiento</option>
+                                <option value="death">Fin</option>
+                                <option value="love">Amor</option>
+                                <option value="moving">Mudanza</option>
+                            </optgroup>
+                            <optgroup label="Académico">
+                                <option value="school">Escuela</option>
+                                <option value="college">Universidad</option>
+                                <option value="institute">Instituto</option>
+                                <option value="self">Autodidacta</option>
+                            </optgroup>
+                            <optgroup label="Trabajo">
+                                <option value="hired">Contratado</option>
+                                <option value="fired">Despedido</option>
+                                <option value="own">Negocio Propio</option>
+                                <option value="self">Independiente</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="status" name="status" value="0">
+                        <label class="form-check-label" for="status">Ocultar Momento</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear Momento</button>
                 </form>
             </div>
         </div>

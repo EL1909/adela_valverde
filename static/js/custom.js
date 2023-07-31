@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     // handle click event on timeline items
     $('.timeline-item').on('click', function() {
         var selectedKeyMoment = $(this);
@@ -9,55 +9,70 @@ $(document).ready(function() {
         var title = selectedKeyMoment.find('h4').text();
         var excerpt = selectedKeyMoment.find('.moment-excerpt').text();
 
-        // Update the background image of the div
+        // Update the contend and image of the divs
         $('#key-moment-image').css('background-image', 'url(' + backgroundImage + ')');
         $('#key-moment-description').text(description);
         $('#key-moment-title').text(title);
         $('#key-moment-excerpt').text(excerpt);
 
-        // Reset the size and position of the image within the frame
-        $('#resizable-image').css({
-            width: '100%',
-            height: '100%',
-            top: 0,
-            left: 0,
-        });
-
         // Add active class to the selected timeline item
         $('.timeline-item').removeClass('active');
         selectedKeyMoment.addClass('active');
     });
-});
 
-
-$(document).ready(function() {
     // handle click event on the "Create New Moment" link
     $('#create-new-moment').on('click', function(event) {
         event.preventDefault();
 
         // Open the modal or navigate to the separate page for creating the new moment
-        // You can use Bootstrap modal or any other method to show the form for creating a new moment
-        // For simplicity, let's assume we're using a modal:
         $('#create-moment-modal').modal('show');
     });
-});
 
+    var cropper;
 
-$(document).ready(function() {
+    // Handle file input change event to initialize the Cropper.js instance
+    $('#moment_image').on('change', function(event) {
+        var input = event.target;
+        var reader = new FileReader();
+
+        // Load the selected image into the Cropper.js preview
+        reader.onload = function() {
+            if (cropper) {
+                cropper.destroy();
+            }
+
+            $('#cropper-image').attr('src', reader.result);
+
+            cropper = new Cropper(document.getElementById('cropper-image'), {
+                aspectRatio: NaN, // Allow free cropping without locking aspect ratio
+                viewMode: 1, // Allow cropping within the container without extending beyond
+                zoomable: true,
+            });
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    });
+
     // handle form submission for creating a new moment
     $('#new-moment-form').on('submit', function(event) {
         event.preventDefault();
 
         // Get the form data
-        var formData = $(this).serialize();
+        var formData = new FormData(this);
+
+        // Get the cropped image data URL from Cropper.js
+        var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
+
+        // Add the cropped image data URL to the form data
+        formData.set('cropped_image', croppedImageDataURL);
 
         // Send the form data to the server to create the new moment
-        // You can use AJAX to send the data or submit the form using the traditional form submission
-        // For this example, let's assume we're using AJAX:
         $.ajax({
             type: 'POST',
-            url: '{% url "create_key_moment" %}',  // Replace with the actual URL for creating a new moment
+            url: '{% url "create_key_moment" %}',
             data: formData,
+            processData: false,
+            contentType: false,
             success: function(response) {
                 // On success, update the timeline with the new moment HTML
                 var newMomentHTML = '<div class="timeline-item" data-dates="' + response.start_date + '">'
@@ -73,11 +88,25 @@ $(document).ready(function() {
 
                 // Close the modal or navigate back to the timeline page
                 $('#create-moment-modal').modal('hide');
+
+                // Reset the form fields for the next moment creation
+                $('#new-moment-form')[0].reset();
             },
             error: function(error) {
                 // Handle any errors that may occur during form submission
             }
         });
     });
-});
 
+    // Handle form submission for creating a new moment
+    $('#new-moment-form').on('submit', function(event) {
+        event.preventDefault();
+
+        // Get the cropped image data URL
+        var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
+
+        // Add the cropped image data URL to the form data
+        var formData = new FormData(this);
+        formData.set('cropped_image', croppedImageDataURL);
+    });
+});
