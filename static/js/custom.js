@@ -9,7 +9,7 @@ $(function() {
         var title = selectedKeyMoment.find('h4').text();
         var excerpt = selectedKeyMoment.find('.moment-excerpt').text();
 
-        // Update the contend and image of the divs
+        // Update the content and image of the divs
         $('#key-moment-image').css('background-image', 'url(' + backgroundImage + ')');
         $('#key-moment-description').text(description);
         $('#key-moment-title').text(title);
@@ -33,24 +33,37 @@ $(function() {
     // Handle file input change event to initialize the Cropper.js instance
     $('#moment_image').on('change', function(event) {
         var input = event.target;
-        var reader = new FileReader();
 
-        // Load the selected image into the Cropper.js preview
-        reader.onload = function() {
+        // Ensure that a file is selected
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            // Read the selected file as data URL
+            reader.onload = function() {
+                var imageDataURL = reader.result;
+
+                // Do something with the data URL (e.g., display the image or initialize the Cropper)
+                if (cropper) {
+                    cropper.destroy();
+                }
+
+                $('#cropper-image').attr('src', imageDataURL);
+
+                cropper = new Cropper(document.getElementById('cropper-image'), {
+                    aspectRatio: NaN, // Allow free cropping without locking aspect ratio
+                    viewMode: 1, // Allow cropping within the container without extending beyond
+                    zoomable: true,
+                });
+            };
+
+            // Start reading the file
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            // If no file is selected, destroy the existing Cropper instance
             if (cropper) {
                 cropper.destroy();
             }
-
-            $('#cropper-image').attr('src', reader.result);
-
-            cropper = new Cropper(document.getElementById('cropper-image'), {
-                aspectRatio: NaN, // Allow free cropping without locking aspect ratio
-                viewMode: 1, // Allow cropping within the container without extending beyond
-                zoomable: true,
-            });
-        };
-
-        reader.readAsDataURL(input.files[0]);
+        }
     });
 
     // handle form submission for creating a new moment
@@ -96,17 +109,5 @@ $(function() {
                 // Handle any errors that may occur during form submission
             }
         });
-    });
-
-    // Handle form submission for creating a new moment
-    $('#new-moment-form').on('submit', function(event) {
-        event.preventDefault();
-
-        // Get the cropped image data URL
-        var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
-
-        // Add the cropped image data URL to the form data
-        var formData = new FormData(this);
-        formData.set('cropped_image', croppedImageDataURL);
     });
 });

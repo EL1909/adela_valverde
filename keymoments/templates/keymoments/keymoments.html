@@ -9,8 +9,9 @@
     <div class="row">
         <div class="col-md-4 col-lg-4 order-1">
             <div class="row quiensoy">
-                <div class="col-12">
-                    <h3 class="history-heading">Mi Camino</h3>
+                <div class="col-12 history-heading">
+                    <h3>Mi Camino</h3>
+                    <p id="key-moment-excerpt">Selecciona un momento</p>
                     <div class="history-items">
                         {% for key_moment in key_moments_list %}
                         <div class="timeline-item" data-dates="{{ key_moment.start_date }}">
