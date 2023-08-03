@@ -50,8 +50,12 @@ $(function() {
                 $('#cropper-image').attr('src', imageDataURL);
 
                 cropper = new Cropper(document.getElementById('cropper-image'), {
-                    aspectRatio: NaN, // Allow free cropping without locking aspect ratio
-                    viewMode: 1, // Allow cropping within the container without extending beyond
+                    aspectRatio: 1, 
+                    cropBoxData: {
+                        width: 320,
+                        height: 380,
+                    },
+                    viewMode: 2, // Allow cropping within the container without extending beyond
                     zoomable: true,
                 });
             };
@@ -65,6 +69,23 @@ $(function() {
             }
         }
     });
+
+    $(document).ready(function() {
+        // Initialize the start date picker
+        $('#start_date').datepicker({
+            format: 'yyyy-mm-dd', // Adjust the date format as needed
+            autoclose: true,
+            // Other options...
+        });
+    
+        // Initialize the end date picker
+        $('#end_date').datepicker({
+            format: 'yyyy-mm-dd', // Adjust the date format as needed
+            autoclose: true,
+            // Other options...
+        });
+    });
+    
 
     // handle form submission for creating a new moment
     $('#new-moment-form').on('submit', function(event) {
@@ -82,7 +103,7 @@ $(function() {
         // Send the form data to the server to create the new moment
         $.ajax({
             type: 'POST',
-            url: '{% url "create_key_moment" %}',
+            url: '{% url "keymoments/create_key_moment" %}',
             data: formData,
             processData: false,
             contentType: false,
@@ -107,6 +128,7 @@ $(function() {
             },
             error: function(error) {
                 // Handle any errors that may occur during form submission
+                console.log ("Error en carga de datos")
             }
         });
     });

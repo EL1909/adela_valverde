@@ -8,7 +8,6 @@
             </div>
             <div class="modal-body">
                 <form id="new-moment-form" enctype="multipart/form-data">
-                    <!-- Add input fields and textareas to capture the new moment details -->
                     <div class="form-group">
                         <label for="title">Titulo</label>
                         <input type="text" class="form-control" id="title" name="title" required>
@@ -18,6 +17,14 @@
                     <div class="form-group">
                         <label for="description">Descripción</label>
                         <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Fecha de Inicio</label>
+                        <input type="text" class="form-control" id="start_date" name="start_date" placeholder="yyyy-mm-dd" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">Fecha de Fin</label>
+                        <input type="text" class="form-control" id="end_date" name="end_date" placeholder="yyyy-mm-dd">
                     </div>
                     <div class="form-group">
                         <label for="moment_type">Tipo de Momento</label>

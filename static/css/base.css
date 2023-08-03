@@ -51,6 +51,11 @@ a:hover, a:active, a:focus {
   color: #666666;
 }
 
+.dropdown-menu .show {
+  position: absolute;
+  transform: translate3d(-5px 50px 10px);
+}
+
 /* Main Navigation ----------------------------*/
 
 #main-nav-container {
@@ -111,6 +116,15 @@ a:hover, a:active, a:focus {
 
 #main-nav-container:hover {
   height: 30px; /* Change the height on hover to show the full menu */
+}
+
+/* ------------------------------------------ Footer */
+
+footer  {
+  position: relative;
+  bottom: 0;
+  height: 100px;
+
 }
 
 /* Homepage ---------------------------------------*/
@@ -208,23 +222,24 @@ a.category-badge > span.badge:hover {
 .history-items  {
   font-family: "inconsolata", sans-serif;
   font-weight: 300;
-  margin-top: 25px;
-  margin-bottom: 20px;
-  height:300px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 300px;
   overflow-y: scroll;
 }
 
 .timeline-item {
-  padding: 4em 2em 0em 2em;
+  margin: 0;
+  padding: 4em 1em 0em 2em;
   position: relative;
   color: #666666;
   border-left: 1px solid #6666664a;
 }
 
-/* .timeline-item p {
+.timeline-item p {
   padding: 0;
   margin: 0;
-} */
+}
 
 .timeline-item:before {
   content: attr(data-dates);
@@ -266,7 +281,7 @@ a.category-badge > span.badge:hover {
   background-repeat:no-repeat;
   overflow: scroll;
   height: 450px;
-  max-width: 300px;
+  max-width: auto;
   border: solid 2px #ffffff;
   z-index: 1;
 }
@@ -291,10 +306,10 @@ a.category-badge > span.badge:hover {
 
 /* Ensure Cropper container is visible and scrollable */
 .cropper-container {
-  width: 100%;
+  width: 100%; 
   max-height: 360px; /* You can adjust the height as needed */
   overflow: hidden; /* Hide any overflow outside the container */
-  margin: 0 auto;
+  margin: solid 5px 0 auto;
 }
 
 #cropper-image {

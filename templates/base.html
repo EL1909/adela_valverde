@@ -27,7 +27,15 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    <!-- Cropper -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <!-- Bootstrap DatePicker -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.11.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.11.0/js/bootstrap-datepicker.min.js"></script> -->
     {% endblock %}
+  </head>
+  
     <title>Adela Valverde {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
@@ -147,8 +155,6 @@
     </script>
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/5c47144494.js" crossorigin="anonymous"></script>
-    <!-- cropper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     {% endblock %}
   </body>
 </html>
