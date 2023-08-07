@@ -43,6 +43,7 @@ class key_moments(models.Model):
     status = models.IntegerField(choices=STATUS, default=1)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to=keymoment_image_upload_path)
+    cropped_image = models.TextField(blank=True)
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=256, null=True, blank=True)
