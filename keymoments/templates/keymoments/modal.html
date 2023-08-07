@@ -8,6 +8,7 @@
             </div>
             <div class="modal-body">
                 <form id="new-moment-form" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="title">Titulo</label>
                         <input type="text" class="form-control" id="title" name="title" required>
@@ -20,11 +21,11 @@
                     </div>
                     <div class="form-group">
                         <label for="start_date">Fecha de Inicio</label>
-                        <input type="text" class="form-control" id="start_date" name="start_date" placeholder="yyyy-mm-dd" required>
+                        <input type="text" class="form-control" id="start_date" name="start_date" placeholder="dd/mm/yyyy"  value="{{ form.start_date.value|date:'d/m/Y' }}" required>
                     </div>
                     <div class="form-group">
                         <label for="end_date">Fecha de Fin</label>
-                        <input type="text" class="form-control" id="end_date" name="end_date" placeholder="yyyy-mm-dd">
+                        <input type="text" class="form-control" id="end_date" name="end_date" placeholder="dd/mm/yyyy" value="{{ form.end_date.value|date:'d/m/Y' }}">
                     </div>
                     <div class="form-group">
                         <label for="moment_type">Tipo de Momento</label>
@@ -50,22 +51,26 @@
                             </optgroup>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="location">Ubicación</label>
+                        <input type="text" class="form-control" id="location" name="location" maxlength="256">
+                    </div>
+                    <div class="col modal-header">
+                        <div class="form-group">
+                            <label for="moment_image">Imagen</label>
+                            <input type="file" class="form-control-file" id="moment_image" name="image" accept="image/*">
+                        </div>
+                        <!-- Add a container for the Cropper -->
+                        <div class="cropper-container">
+                            <img id="cropper-image" src="#" alt="Preview">
+                        </div>
+                    </div>
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="status" name="status" value="0">
+                        <input type="checkbox" class="form-check-input" id="status" name="status" value="0" checked>
                         <label class="form-check-label" for="status">Ocultar Momento</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Crear Momento</button>
                 </form>
-            </div>
-            <div class="col modal-header">
-                <div class="form-group">
-                    <label for="moment_image">Imagen</label>
-                    <input type="file" class="form-control-file" id="moment_image" name="image" accept="image/*">
-                </div>
-                <!-- Add a container for the Cropper -->
-                <div class="cropper-container">
-                    <img id="cropper-image" src="#" alt="Preview">
-                </div>
             </div>
         </div>    
     </div>

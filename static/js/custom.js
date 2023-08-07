@@ -69,23 +69,22 @@ $(function() {
             }
         }
     });
+    
 
-    $(document).ready(function() {
-        // Initialize the start date picker
-        $('#start_date').datepicker({
-            format: 'yyyy-mm-dd', // Adjust the date format as needed
-            autoclose: true,
-            // Other options...
-        });
-    
-        // Initialize the end date picker
-        $('#end_date').datepicker({
-            format: 'yyyy-mm-dd', // Adjust the date format as needed
-            autoclose: true,
-            // Other options...
-        });
+    // Initialize the start date picker
+    $('#start_date').datepicker({
+        format: 'dd/mm/yyyy', // Adjust the date format as needed (e.g., 'dd/mm/yyyy')
+        autoclose: true,
+        // Other options...
     });
-    
+
+    // Initialize the end date picker
+    $('#end_date').datepicker({
+        format: 'dd/mm/yyyy', // Adjust the date format as needed (e.g., 'dd/mm/yyyy')
+        autoclose: true,
+        // Other options...
+    });
+
 
     // handle form submission for creating a new moment
     $('#new-moment-form').on('submit', function(event) {
@@ -101,14 +100,24 @@ $(function() {
         formData.set('cropped_image', croppedImageDataURL);
 
         // Send the form data to the server to create the new moment
+
+        var csrftoken = $('[name=csrfmiddlewaretoken]').val();
+
         $.ajax({
+            headers: {
+                "X-CSRFToken": csrftoken
+            },
             type: 'POST',
-            url: '{% url "keymoments/create_key_moment" %}',
+            url: '/keymoments/create_key_moment/',
             data: formData,
             processData: false,
             contentType: false,
             success: function(response) {
                 // On success, update the timeline with the new moment HTML
+                console.log(response);
+                console.log(response.title);
+                console.log(response.start_date);
+                console.log(response.image_url);
                 var newMomentHTML = '<div class="timeline-item" data-dates="' + response.start_date + '">'
                     + '<a href="#">'
                     + '<h4>' + response.title + '</h4>'
