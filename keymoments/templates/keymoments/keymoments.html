@@ -14,13 +14,18 @@
                     <p>Selecciona un momento</p>
                     <div class="history-items">
                         {% for key_moment in key_moments_list %}
-                        <div class="timeline-item" data-dates="{{ key_moment.start_date }}">
+                        <div class="col-10 timeline-item" data-dates="{{ key_moment.start_date }}">
                             <a href="#">
                                 <h4>{{ key_moment.title }}</h4>
                                 <p class="moment-excerpt">{{ key_moment.excerpt }}</p>
                                 <p class="moment-description" style="display: none;">{{ key_moment.description }}</p>
                                 <img src="{{ key_moment.image.url }}" alt="{{ imagepost.title }}" style="display: none;">
                             </a>
+                        </div>
+                        <div class="col-1">
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'edit_key_moment' moment_id=key_moment.id %}" class="btn btn-secondary">Edit</a>
+                            {% endif %}
                         </div>
                         {% endfor %}
                     </div>

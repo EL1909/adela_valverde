@@ -140,5 +140,59 @@ $(function() {
                 console.log ("Error en carga de datos")
             }
         });
+
+    // Handle edit button click event
+    $('.edit-moment').on('click', function(event) {
+        event.preventDefault();
+        var momentId = $(this).data('moment-id');
+
+        // Open the modal with the edit form
+        $('#moment-modal').modal('show');
+
+        // Fetch existing moment data via AJAX and pre-populate the form
+        $.ajax({
+            type: 'GET',
+            url: '/keymoments/edit/' + momentId + '/',
+            success: function(response) {
+                $('#title').val(response.title);
+                $('#excerpt').val(response.excerpt);
+                $('#description').val(response.description);
+                $('#start_date').val(response.start_date);
+                $('#end_date').val(response.end_date);
+                $('#moment_type').val(response.moment_type);
+                $('#location').val(response.location);
+                
+                // Display the cropped image in the Cropper instance (if available)
+                if (response.cropped_image_data) {
+                    var imageDataURL = response.cropped_image_data;
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+
+                    $('#cropper-image').attr('src', imageDataURL);
+
+                    cropper = new Cropper(document.getElementById('cropper-image'), {
+                        aspectRatio: 1,
+                        cropBoxData: {
+                            width: 320,
+                            height: 380,
+                        },
+                        viewMode: 2, // Allow cropping within the container without extending beyond
+                        zoomable: true,
+                    });
+                } else {
+                    // If no cropped image data, destroy the existing Cropper instance
+                    if (cropper) {
+                        cropper.destroy();
+                    }
+                }
+
+                // Set form action URL for editing
+                $('#moment-form').attr('action', '/keymoments/edit/' + momentId + '/');
+            },
+            error: function(error) {
+                console.log('Error fetching moment data for editing');
+            }
+        });
     });
 });

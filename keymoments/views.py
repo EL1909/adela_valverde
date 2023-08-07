@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import key_moments
 from .forms import KeyMomentsForm
 from django.http import JsonResponse
@@ -55,3 +55,22 @@ def create_key_moment(request):
         form = KeyMomentsForm()
 
     return render(request, 'keymoments/create_key_moment.html', {'form': form})
+
+
+def edit_key_moment(request, moment_id):
+    moment = get_object_or_404(key_moments, id=moment_id)
+    
+    # You can extract necessary fields from the 'moment' object and return them in the response
+    response_data = {
+        'title': moment.title,
+        'excerpt': moment.excerpt,
+        'description': moment.description,
+        'start_date': moment.start_date,
+        'end_date': moment.end_date,
+        'moment_type': moment.moment_type,
+        'location': moment.location,
+        'cropped_image_data': moment.cropped_image.url if moment.cropped_image else None,
+    }
+    
+    return JsonResponse(response_data)
+
