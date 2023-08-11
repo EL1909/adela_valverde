@@ -35,7 +35,7 @@ $(function() {
             cropper.destroy();
         }
 
-        $('#cropper-image').attr('scr', imageDataURL);
+        $('#cropper-image').attr('src', imageDataURL);
 
         cropper = new Cropper(document.getElementById('cropper-image'), {
             aspectRatio: 1,
@@ -92,14 +92,26 @@ $(function() {
     $('#new-moment-form').on('submit', function(event) {
         event.preventDefault();
 
-        // Get the form data
-        var formData = new FormData(this);
+        // Create a new FormData object
+        var formData = new FormData();
+
+        // Add other form fields to the form data object
+        formData.append('title', $('#title').val());
+        formData.append('excerpt', $('#excerpt').val());
+        formData.append('description', $('#description').val());
+        formData.append('start_date', $('#start_date').val());
+        formData.append('end_date', $('#end_date').val());
+        formData.append('moment_type', $('#moment_type').val());
+        formData.append('location', $('#location').val());
 
         // Get the cropped image data URL from Cropper.js
         var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
 
-        // Add the cropped image data URL to the form data
-        formData.set('cropped_image', croppedImageDataURL);
+        // Convert the data URL to a Blob object (file)
+        var croppedImageFile = dataURLtoBlob(croppedImageDataURL);
+
+        // Append the cropped image file to the FormData object
+        formData.append('cropped_image', croppedImageFile, 'cropped_image.jpg');
 
         // Send the form data to the server to create the new moment
 
@@ -143,6 +155,20 @@ $(function() {
             }
         });
     });
+
+    // Function to convert data URL to Blob
+    function dataURLtoBlob(dataURL) {
+        var arr = dataURL.split(',');
+        var mime = arr[0].match(/:(.*?);/)[1];
+        var bstr = atob(arr[1]);
+        var n = bstr.length;
+        var u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], { type: mime });
+    }
+
 
     // Handle edit button click event
     $('.edit-moment').on('click', function(event) {
