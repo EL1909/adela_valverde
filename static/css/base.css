@@ -268,8 +268,8 @@ a.category-badge > span.badge:hover {
 
 .description-box  {
   overflow-y: scroll;
-  height:fit-content;
-  font-size: 1.25rem;
+  height:370px;
+  font-size: 1rem;
   text-align: left;
   border-left: 1px solid #6666664a;
   padding: 1em 2em 0em 2em;

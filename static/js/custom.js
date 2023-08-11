@@ -29,6 +29,24 @@ $(function() {
     });
 
     var cropper;
+    
+    function initializeCropper(imageDataURL)    {
+        if (cropper)    {
+            cropper.destroy();
+        }
+
+        $('#cropper-image').attr('scr', imageDataURL);
+
+        cropper = new Cropper(document.getElementById('cropper-image'), {
+            aspectRatio: 1,
+            cropBoxData: {
+                with:320,
+                height:380,
+            },
+            viewMode:2, // Allow cropping within the container without extending beyond
+            zoomable: true,
+        });
+    }
 
     // Handle file input change event to initialize the Cropper.js instance
     $('#moment_image').on('change', function(event) {
@@ -41,23 +59,7 @@ $(function() {
             // Read the selected file as data URL
             reader.onload = function() {
                 var imageDataURL = reader.result;
-
-                // Do something with the data URL (e.g., display the image or initialize the Cropper)
-                if (cropper) {
-                    cropper.destroy();
-                }
-
-                $('#cropper-image').attr('src', imageDataURL);
-
-                cropper = new Cropper(document.getElementById('cropper-image'), {
-                    aspectRatio: 1, 
-                    cropBoxData: {
-                        width: 320,
-                        height: 380,
-                    },
-                    viewMode: 2, // Allow cropping within the container without extending beyond
-                    zoomable: true,
-                });
+                initializeCropper(imageDataURL);
             };
 
             // Start reading the file
@@ -140,6 +142,7 @@ $(function() {
                 console.log ("Error en carga de datos")
             }
         });
+    });
 
     // Handle edit button click event
     $('.edit-moment').on('click', function(event) {
@@ -161,38 +164,18 @@ $(function() {
                 $('#end_date').val(response.end_date);
                 $('#moment_type').val(response.moment_type);
                 $('#location').val(response.location);
-                
-                // Display the cropped image in the Cropper instance (if available)
-                if (response.cropped_image_data) {
-                    var imageDataURL = response.cropped_image_data;
-                    if (cropper) {
-                        cropper.destroy();
-                    }
-
-                    $('#cropper-image').attr('src', imageDataURL);
-
-                    cropper = new Cropper(document.getElementById('cropper-image'), {
-                        aspectRatio: 1,
-                        cropBoxData: {
-                            width: 320,
-                            height: 380,
-                        },
-                        viewMode: 2, // Allow cropping within the container without extending beyond
-                        zoomable: true,
-                    });
-                } else {
-                    // If no cropped image data, destroy the existing Cropper instance
-                    if (cropper) {
-                        cropper.destroy();
-                    }
-                }
-
-                // Set form action URL for editing
-                $('#moment-form').attr('action', '/keymoments/edit/' + momentId + '/');
-            },
-            error: function(error) {
-                console.log('Error fetching moment data for editing');
+            
+            // Display the cropped image in the Cropper instance (if available)
+            if (response.cropped_image_data) {
+                initializeCropper(response.cropped_image_data);
             }
-        });
+
+            // Set form action URL for editing
+            $('#moment-form').attr('action', '/keymoments/edit/' + momentId + '/');
+        },
+        error: function(error) {
+            console.log('Error fetching moment data for editing');
+        }
+        });   
     });
 });
