@@ -104,6 +104,10 @@ $(function() {
         formData.append('moment_type', $('#moment_type').val());
         formData.append('location', $('#location').val());
 
+         // Check the checkbox state and set status accordingly
+        var statusValue = $('#status-checkbox').prop('checked') ? 0 : 1;
+        formData.append('status', statusValue);
+        
         // Get the cropped image data URL from Cropper.js
         var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
 
@@ -111,7 +115,13 @@ $(function() {
         var croppedImageFile = dataURLtoBlob(croppedImageDataURL);
 
         // Append the cropped image file to the FormData object
-        formData.append('cropped_image', croppedImageFile, 'cropped_image.jpg');
+        formData.append('image', croppedImageFile, 'cropped_image.jpg');
+
+        // Log the FormData contents for debugging
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+            console.log(typeof croppedImageFile);
+        }
 
         // Send the form data to the server to create the new moment
 
@@ -132,6 +142,8 @@ $(function() {
                 console.log(response.title);
                 console.log(response.start_date);
                 console.log(response.image_url);
+                console.log(pair[0] + ': ' + pair[1]);
+                console.log(typeof croppedImageFile);
                 var newMomentHTML = '<div class="timeline-item" data-dates="' + response.start_date + '">'
                     + '<a href="#">'
                     + '<h4>' + response.title + '</h4>'
@@ -158,6 +170,7 @@ $(function() {
 
     // Function to convert data URL to Blob
     function dataURLtoBlob(dataURL) {
+        console.log(dataURL);
         var arr = dataURL.split(',');
         var mime = arr[0].match(/:(.*?);/)[1];
         var bstr = atob(arr[1]);

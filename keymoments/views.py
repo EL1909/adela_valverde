@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 from .models import key_moments
 from .forms import KeyMomentsForm
-from django.http import JsonResponse
 
 
 # Create your views here.
@@ -21,16 +21,16 @@ def create_key_moment(request):
     if request.method == 'POST':
         form = KeyMomentsForm(request.POST, request.FILES)
         if form.is_valid():
-            new_moment.save()
+            new_moment = form.save()
 
             response_data = {
                 'title': new_moment.title,
                 'start_date': new_moment.start_date,
-                'image': new_moment.image.url,
                 'excerpt': new_moment.excerpt,
                 'end_date': new_moment.end_date,
                 'description': new_moment.description,
                 'moment_type': new_moment.moment_type,
+                'image_url': new_moment.image.url if new_moment.image else None,
             }
             return JsonResponse(response_data)
         else:

@@ -5,7 +5,7 @@ from django.forms import DateInput
 
 class KeyMomentsForm(forms.ModelForm):
     start_date = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
-    end_date = forms.DateField(widget=DateInput(attrs={'type': 'date'}))
+    end_date = forms.DateField(widget=DateInput(attrs={'type': 'date'}), required=False)
 
     class Meta:
         model = key_moments
