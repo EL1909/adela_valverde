@@ -138,12 +138,6 @@ $(function() {
             contentType: false,
             success: function(response) {
                 // On success, update the timeline with the new moment HTML
-                console.log(response);
-                console.log(response.title);
-                console.log(response.start_date);
-                console.log(response.image_url);
-                console.log(pair[0] + ': ' + pair[1]);
-                console.log(typeof croppedImageFile);
                 var newMomentHTML = '<div class="timeline-item" data-dates="' + response.start_date + '">'
                     + '<a href="#">'
                     + '<h4>' + response.title + '</h4>'
@@ -164,6 +158,12 @@ $(function() {
             error: function(error) {
                 // Handle any errors that may occur during form submission
                 console.log ("Error en carga de datos")
+                console.log(response);
+                console.log(response.title);
+                console.log(response.start_date);
+                console.log(response.image_url);
+                console.log(pair[0] + ': ' + pair[1]);
+                console.log(typeof croppedImageFile);
             }
         });
     });
@@ -182,39 +182,39 @@ $(function() {
         return new Blob([u8arr], { type: mime });
     }
 
-
     // Handle edit button click event
     $('.edit-moment').on('click', function(event) {
-        event.preventDefault();
-        var momentId = $(this).data('moment-id');
+    event.preventDefault();
+    
+    // Get the moment ID from the data attribute
+    var momentId = $(this).data('moment-id');
 
-        // Open the modal with the edit form
-        $('#moment-modal').modal('show');
+    // Open the modal with the edit form
+    $('#create-moment-modal').modal('show');
 
         // Fetch existing moment data via AJAX and pre-populate the form
         $.ajax({
-            type: 'GET',
-            url: '/keymoments/edit/' + momentId + '/',
-            success: function(response) {
-                $('#title').val(response.title);
-                $('#excerpt').val(response.excerpt);
-                $('#description').val(response.description);
-                $('#start_date').val(response.start_date);
-                $('#end_date').val(response.end_date);
-                $('#moment_type').val(response.moment_type);
-                $('#location').val(response.location);
-            
-            // Display the cropped image in the Cropper instance (if available)
-            if (response.cropped_image_data) {
-                initializeCropper(response.cropped_image_data);
-            }
+        type: 'GET',
+        url: '/keymoments/edit/' + momentId + '/',
+        success: function(response) {
+            console.log(response); // Log the entire response object to check the data
+            // Pre-populate form fields with fetched data
+            $('#title').val(response.title);
+            $('#excerpt').val(response.excerpt);
+            $('#description').val(response.description);
+            $('#start_date').val(response.start_date);
+            $('#end_date').val(response.end_date);
+            $('#moment_type').val(response.moment_type);
+            $('#location').val(response.location);
+            $('#moment-image').attr('src', response.image_url);
 
-            // Set form action URL for editing
-            $('#moment-form').attr('action', '/keymoments/edit/' + momentId + '/');
+            // Set the form action URL for editing
+            var editFormAction = '/keymoments/edit/' + momentId + '/';
+            $('#new-moment-form').attr('action', editFormAction);
         },
         error: function(error) {
             console.log('Error fetching moment data for editing');
         }
-        });   
+        });
     });
 });

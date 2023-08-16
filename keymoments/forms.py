@@ -9,4 +9,4 @@ class KeyMomentsForm(forms.ModelForm):
 
     class Meta:
         model = key_moments
-        fields = ['title', 'excerpt', 'description', 'start_date', 'end_date', 'moment_type', 'location', 'image', 'status']
+        fields = ['title', 'excerpt', 'description', 'start_date', 'end_date', 'moment_type', 'location', 'image', 'status','cropped_image']

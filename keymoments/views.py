@@ -8,7 +8,7 @@ from .forms import KeyMomentsForm
 
 
 def key_moments_list(request):
-    """ A view to return the Key Moments page"""
+    """ View to return the Key Moments page"""
 
     key_moments_list = key_moments.objects.all()
 
@@ -16,7 +16,7 @@ def key_moments_list(request):
 
 
 def create_key_moment(request):
-    """ A view to create moments"""
+    """ View to create moments"""
 
     if request.method == 'POST':
         form = KeyMomentsForm(request.POST, request.FILES)
@@ -46,17 +46,32 @@ def create_key_moment(request):
 def edit_key_moment(request, moment_id):
     moment = get_object_or_404(key_moments, id=moment_id)
     
-    # Extract necessary fields from the 'moment' object and return them in the response
-    response_data = {
-        'title': moment.title,
-        'excerpt': moment.excerpt,
-        'description': moment.description,
-        'start_date': moment.start_date,
-        'end_date': moment.end_date,
-        'moment_type': moment.moment_type,
-        'location': moment.location,
-        'cropped_image_data': moment.cropped_image.url if moment.cropped_image else None,
-    }
+    if request.method == 'GET':
+        # Extract necessary fields from the 'moment' object and return them in the response
+        response_data = {
+            'title': moment.title,
+            'excerpt': moment.excerpt,
+            'description': moment.description,
+            'start_date': moment.start_date.strftime('%Y-%m-%d'),
+            'end_date': moment.end_date.strftime('%Y-%m-%d') if moment.end_date else None,
+            'moment_type': moment.moment_type,
+            'location': moment.location,
+            'image_url': moment.image.url if moment.image else None,  # Use the original image URL
+        }
+        return JsonResponse(response_data)
     
-    return JsonResponse(response_data)
-    
+    if request.method == 'POST':
+        form = KeyMomentsForm(request.POST, instance=moment)
+        if form.is_valid():
+            # Update the image field with the cropped image (if provided)
+            cropped_image_data = form.cleaned_data.get('cropped_image')
+            if cropped_image_data:
+                moment.image = cropped_image_data
+            form.save()
+
+            return JsonResponse({'success': True})
+        else:
+            # Handle form validation errors
+            errors = form.errors.as_json()
+            return JsonResponse({'errors': errors}, status=400)
+
