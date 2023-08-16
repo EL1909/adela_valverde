@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import key_moments
 from .forms import KeyMomentsForm
+import logging
 
 
 # Create your views here.
@@ -42,8 +43,14 @@ def create_key_moment(request):
 
     return render(request, 'keymoments/create_key_moment.html', {'form': form})
 
+logger = logging.getLogger(__name__)
 
 def edit_key_moment(request, moment_id):
+    
+    logger.debug("Edit view accessed for Moment ID: %s", moment_id)  # Log using Django's logger
+
+    print("Edit view accessed for Moment ID:", moment_id)  # Print to check if the view is accessed
+
     moment = get_object_or_404(key_moments, id=moment_id)
     
     if request.method == 'GET':
@@ -58,6 +65,8 @@ def edit_key_moment(request, moment_id):
             'location': moment.location,
             'image_url': moment.image.url if moment.image else None,  # Use the original image URL
         }
+        
+        print("Generated response data:", response_data)  # Print the response data
         return JsonResponse(response_data)
     
     if request.method == 'POST':
