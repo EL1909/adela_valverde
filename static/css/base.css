@@ -286,13 +286,6 @@ a.category-badge > span.badge:hover {
   z-index: 1;
 }
 
-#cropper-image {
-  max-width: auto;
-  max-height: 360px; /* You can adjust the height as needed */
-  display: flex;
-  margin: 0;
-  z-index: 2;
-}
 
 /* Adjust modal size and position */
 .modal-dialog {
@@ -312,16 +305,22 @@ a.category-badge > span.badge:hover {
   margin: solid 5px 0 auto;
 }
 
-#cropper-image {
-  max-width: 100%;
-  max-height: auto; /* Ensure the image fits within the container */
+#cropper-image  {
+  max-width: auto;
+  max-height: 360px; /* You can adjust the height as needed */
   display: block;
+  margin: 0;
+  z-index: 2;
 }
 
 /* Adjust modal body to scroll if needed */
 .modal-body {
   max-height: 500px; /* Limit the height of the modal body */
   overflow-y: auto; /* Add scrollbars if content exceeds the height */
+}
+
+.ui-datepicker-header {
+  background-color: #fafafa;
 }
 
 

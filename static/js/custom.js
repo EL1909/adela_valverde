@@ -30,7 +30,7 @@ $(function() {
 
     // Activate Cropper.js
     var cropper;
-    
+
     function initializeCropper(imageDataURL)    {
         if (cropper)    {
             cropper.destroy();
@@ -41,7 +41,7 @@ $(function() {
         cropper = new Cropper(document.getElementById('cropper-image'), {
             aspectRatio: 1,
             cropBoxData: {
-                with:320,
+                with:120,
                 height:380,
             },
             viewMode:2, // Allow cropping within the container without extending beyond
@@ -186,6 +186,11 @@ $(function() {
     // Handle edit button click event
     $('.edit-moment').on('click', function(event) {
     event.preventDefault();
+
+    // Handle form submission for editing a moment
+    $('#edit-moment-form').on('submit', function(event) {
+        event.preventDefault();
+    });
     
     // Get the moment ID from the data attribute
     var momentId = $(this).data('moment-id');
@@ -207,7 +212,9 @@ $(function() {
             $('#end_date').val(response.end_date);
             $('#moment_type').val(response.moment_type);
             $('#location').val(response.location);
-            $('#moment-image').attr('src', response.image_url);
+
+            // Initialize Cropper to edit the image 
+            initializeCropper(response.image_url);
 
             // Set the form action URL for editing
             var editFormAction = '/keymoments/edit/' + momentId + '/';
@@ -218,6 +225,8 @@ $(function() {
         }
         });
     });
+
+
 
     // Handle action on "Delete" link
     $('.delete-moment').on('click', function(event) {
