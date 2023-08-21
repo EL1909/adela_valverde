@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import JsonResponse
 from .models import key_moments
 from .forms import KeyMomentsForm
@@ -10,15 +12,14 @@ import logging
 
 def key_moments_list(request):
     """ View to return the Key Moments page"""
-
     key_moments_list = key_moments.objects.all()
 
     return render(request, 'keymoments/keymoments.html', {'key_moments_list': key_moments_list})
 
 
+@login_required
 def create_key_moment(request):
-    """ View to create moments"""
-
+    """ View to edit moments"""
     if request.method == 'POST':
         form = KeyMomentsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -43,16 +44,12 @@ def create_key_moment(request):
 
     return render(request, 'keymoments/create_key_moment.html', {'form': form})
 
-logger = logging.getLogger(__name__)
 
+@login_required
 def edit_key_moment(request, moment_id):
-    
-    logger.debug("Edit view accessed for Moment ID: %s", moment_id)  # Log using Django's logger
-
-    print("Edit view accessed for Moment ID:", moment_id)  # Print to check if the view is accessed
-
+    """ View to edit moments"""
     moment = get_object_or_404(key_moments, id=moment_id)
-    
+
     if request.method == 'GET':
         # Extract necessary fields from the 'moment' object and return them in the response
         response_data = {
@@ -65,10 +62,10 @@ def edit_key_moment(request, moment_id):
             'location': moment.location,
             'image_url': moment.image.url if moment.image else None,  # Use the original image URL
         }
-        
+
         print("Generated response data:", response_data)  # Print the response data
         return JsonResponse(response_data)
-    
+
     if request.method == 'POST':
         form = KeyMomentsForm(request.POST, instance=moment)
         if form.is_valid():
@@ -84,3 +81,20 @@ def edit_key_moment(request, moment_id):
             errors = form.errors.as_json()
             return JsonResponse({'errors': errors}, status=400)
 
+
+@login_required
+def delete_key_moment(request, moment_id):
+    """ View to delete moments"""
+    print(f"Received moment_id: {moment_id}")  # Debug print
+    item = get_object_or_404(key_moments, id=moment_id)
+
+    if request.method == 'POST':
+        # Check if the user has confirmed the deletion
+        if request.POST.get('delete'):
+            item.delete()
+            # add a success message to the messages framework
+            messages.success(request, 'Eliminado')
+            return redirect('keymoments')
+    else:
+        # Render the confirmation template
+        pass

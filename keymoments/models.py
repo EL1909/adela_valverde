@@ -24,7 +24,7 @@ def keymoment_image_upload_path(instance, filename):
 
 
 class key_moments(models.Model):
-    
+
     class Meta:
         verbose_name_plural = 'Key Moments'
 

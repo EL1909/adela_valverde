@@ -28,6 +28,7 @@ $(function() {
         $('#create-moment-modal').modal('show');
     });
 
+    // Activate Cropper.js
     var cropper;
     
     function initializeCropper(imageDataURL)    {
@@ -216,5 +217,30 @@ $(function() {
             console.log('Error fetching moment data for editing');
         }
         });
+    });
+
+    // Handle action on "Delete" link
+    $('.delete-moment').on('click', function(event) {
+        event.preventDefault();
+
+        if (confirm("Confirme para eliminar"))  {
+            var momentId = $(this).data('moment-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '/keymoments/delete/'+ momentId + '/',
+                data: {
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    delete: 1,
+                },
+                success: function(response) {
+                    $('.timeline-item[data-moment-id="'+ momentId + '"]').remove();
+                    location.reload();
+                },
+                error: function()   {
+                    // handle error
+                }
+            });
+        }
     });
 });
