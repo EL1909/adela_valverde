@@ -44,6 +44,12 @@ class key_moments(models.Model):
     status = models.IntegerField(choices=STATUS, default=1)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to=keymoment_image_upload_path)
+    def delete(self, *args, **kwargs):
+        # Delete associated image if it exist
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
+
     cropped_image = models.TextField(blank=True)
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)

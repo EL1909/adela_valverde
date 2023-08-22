@@ -19,7 +19,9 @@
                                 <h4>{{ key_moment.title }}</h4>
                                 <p class="moment-excerpt">{{ key_moment.excerpt }}</p>
                                 <p class="moment-description" style="display: none;">{{ key_moment.description }}</p>
+                                {% if key_moment.image %}
                                 <img src="{{ key_moment.image.url }}" alt="{{ key_moment.title }}" style="display: none;">
+                                {% endif %}
                             </a>
                         </div>
                         <div class="col-1">

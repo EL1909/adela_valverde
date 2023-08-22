@@ -1,4 +1,6 @@
-$(function() {
+$(function()    {
+    let momentID;
+
     // handle click event on timeline items
     $('.timeline-item').on('click', function() {
         var selectedKeyMoment = $(this);
@@ -14,7 +16,7 @@ $(function() {
         $('#key-moment-description').text(description);
         $('#key-moment-title').text(title);
         $('#key-moment-excerpt').text(excerpt);
-
+    
         // Add active class to the selected timeline item
         $('.timeline-item').removeClass('active');
         selectedKeyMoment.addClass('active');
@@ -22,8 +24,7 @@ $(function() {
 
     // handle click event on the "Create New Moment" link
     $('#create-new-moment').on('click', function(event) {
-        event.preventDefault();
-
+    event.preventDefault();
         // Open the modal or navigate to the separate page for creating the new moment
         $('#create-moment-modal').modal('show');
     });
@@ -41,7 +42,7 @@ $(function() {
         cropper = new Cropper(document.getElementById('cropper-image'), {
             aspectRatio: 1,
             cropBoxData: {
-                with:120,
+                width:80,
                 height:380,
             },
             viewMode:2, // Allow cropping within the container without extending beyond
@@ -72,22 +73,6 @@ $(function() {
             }
         }
     });
-    
-
-    // Initialize the start date picker
-    $('#start_date').datepicker({
-        format: 'dd/mm/yyyy', // Adjust the date format as needed (e.g., 'dd/mm/yyyy')
-        autoclose: true,
-        // Other options...
-    });
-
-    // Initialize the end date picker
-    $('#end_date').datepicker({
-        format: 'dd/mm/yyyy', // Adjust the date format as needed (e.g., 'dd/mm/yyyy')
-        autoclose: true,
-        // Other options...
-    });
-
 
     // handle form submission for creating a new moment
     $('#new-moment-form').on('submit', function(event) {
@@ -116,7 +101,7 @@ $(function() {
         var croppedImageFile = dataURLtoBlob(croppedImageDataURL);
 
         // Append the cropped image file to the FormData object
-        formData.append('image', croppedImageFile, 'cropped_image.jpg');
+        formData.append('cropped_image', croppedImageFile, 'cropped_image.jpg');
 
         // Log the FormData contents for debugging
         for (var pair of formData.entries()) {
@@ -155,6 +140,8 @@ $(function() {
 
                 // Reset the form fields for the next moment creation
                 $('#new-moment-form')[0].reset();
+
+                location.reload();
             },
             error: function(error) {
                 // Handle any errors that may occur during form submission
@@ -183,57 +170,12 @@ $(function() {
         return new Blob([u8arr], { type: mime });
     }
 
-    // Handle edit button click event
-    $('.edit-moment').on('click', function(event) {
-    event.preventDefault();
-
-    // Handle form submission for editing a moment
-    $('#edit-moment-form').on('submit', function(event) {
-        event.preventDefault();
-    });
-    
-    // Get the moment ID from the data attribute
-    var momentId = $(this).data('moment-id');
-
-    // Open the modal with the edit form
-    $('#create-moment-modal').modal('show');
-
-        // Fetch existing moment data via AJAX and pre-populate the form
-        $.ajax({
-        type: 'GET',
-        url: '/keymoments/edit/' + momentId + '/',
-        success: function(response) {
-            console.log(response); // Log the entire response object to check the data
-            // Pre-populate form fields with fetched data
-            $('#title').val(response.title);
-            $('#excerpt').val(response.excerpt);
-            $('#description').val(response.description);
-            $('#start_date').val(response.start_date);
-            $('#end_date').val(response.end_date);
-            $('#moment_type').val(response.moment_type);
-            $('#location').val(response.location);
-
-            // Initialize Cropper to edit the image 
-            initializeCropper(response.image_url);
-
-            // Set the form action URL for editing
-            var editFormAction = '/keymoments/edit/' + momentId + '/';
-            $('#new-moment-form').attr('action', editFormAction);
-        },
-        error: function(error) {
-            console.log('Error fetching moment data for editing');
-        }
-        });
-    });
-
-
-
     // Handle action on "Delete" link
     $('.delete-moment').on('click', function(event) {
         event.preventDefault();
 
         if (confirm("Confirme para eliminar"))  {
-            var momentId = $(this).data('moment-id');
+            momentId = $(this).data('moment-id');
 
             $.ajax({
                 type: 'POST',
@@ -252,4 +194,6 @@ $(function() {
             });
         }
     });
-});
+
+
+});// cierre

@@ -33,6 +33,7 @@ def create_key_moment(request):
                 'description': new_moment.description,
                 'moment_type': new_moment.moment_type,
                 'image_url': new_moment.image.url if new_moment.image else None,
+                'cropped_image': new_moment.cropped_image.url if new_moment.cropped_image else None,
             }
             return JsonResponse(response_data)
         else:
