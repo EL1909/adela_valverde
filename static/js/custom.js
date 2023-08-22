@@ -170,6 +170,90 @@ $(function()    {
         return new Blob([u8arr], { type: mime });
     }
 
+    // Handle edit button click event
+    $('.edit-moment').on('click', function(event) {
+        event.preventDefault();
+        momentId = $(this).data('moment-id');
+
+        // Open the modal with the edit form
+        $('#create-moment-modal').modal('show');
+
+        // Fetch existing moment data via AJAX and pre-populate the form
+        $.ajax({
+            type: 'GET',
+            url: '/keymoments/edit/' + momentId + '/',
+            success: function(response) {
+                console.log(response); // Log the entire response object to check the data
+                // Pre-populate form fields with fetched data
+                $('#title').val(response.title);
+                $('#excerpt').val(response.excerpt);
+                $('#description').val(response.description);
+                $('#start_date').val(response.start_date);
+                $('#end_date').val(response.end_date);
+                $('#moment_type').val(response.moment_type);
+                $('#location').val(response.location);
+
+                // Initialize Cropper to edit the image 
+                initializeCropper(response.image_url);
+
+                // Store the momentId as data attribute in the form for submission
+                $('#edit-moment-form').attr('data-moment-id', momentId);
+            },
+            error: function(error) {
+                console.log('Error fetching moment data for editing');
+            }
+        });
+    });
+
+    // Handle form submission for editing a moment
+    $('#edit-moment-form').on('submit', function(event) {
+        event.preventDefault();
+
+        // Get the momentId from the data attribute
+        momentId = $(this).attr('data-moment-id');
+
+        // Create a new FormData object
+        var formData = new FormData();
+
+        // Add other form fields to the form data object
+        formData.append('title', $('#title').val());
+        formData.append('excerpt', $('#excerpt').val());
+        formData.append('description', $('#description').val());
+        formData.append('start_date', $('#start_date').val());
+        formData.append('end_date', $('#end_date').val());
+        formData.append('moment_type', $('#moment_type').val());
+        formData.append('location', $('#location').val());
+
+        // Get the cropped image data URL from Cropper.js
+        var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
+
+        // Convert the data URL to a Blob object (file)
+        var croppedImageFile = dataURLtoBlob(croppedImageDataURL);
+
+        // Append the cropped image file to the FormData object
+        formData.append('image', croppedImageFile);
+
+        // Send the form data to the server to update the moment
+        var csrftoken = $('[name=csrfmiddlewaretoken]').val();
+
+        $.ajax({
+            headers: {
+                "X-CSRFToken": csrftoken
+            },
+            type: 'POST',
+            url: '/keymoments/edit/' + momentId + '/',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                // Handle the success response
+            },
+            error: function(error) {
+                // Handle the error response
+            }
+        });
+    });
+
     // Handle action on "Delete" link
     $('.delete-moment').on('click', function(event) {
         event.preventDefault();
@@ -194,6 +278,4 @@ $(function()    {
             });
         }
     });
-
-
-});// cierre
+});

@@ -63,19 +63,16 @@ def edit_key_moment(request, moment_id):
             'location': moment.location,
             'image_url': moment.image.url if moment.image else None,  # Use the original image URL
         }
-
-        print("Generated response data:", response_data)  # Print the response data
         return JsonResponse(response_data)
 
     if request.method == 'POST':
         form = KeyMomentsForm(request.POST, instance=moment)
         if form.is_valid():
             # Update the image field with the cropped image (if provided)
-            cropped_image_data = form.cleaned_data.get('cropped_image')
+            cropped_image_data = form.cleaned_data.get('image')
             if cropped_image_data:
                 moment.image = cropped_image_data
             form.save()
-
             return JsonResponse({'success': True})
         else:
             # Handle form validation errors
