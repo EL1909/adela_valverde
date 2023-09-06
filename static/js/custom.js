@@ -24,7 +24,9 @@ $(function()    {
 
     // handle click event on the "Create New Moment" link
     $('#create-new-moment').on('click', function(event) {
-    event.preventDefault();
+        event.preventDefault();
+        // Set editing mode to indicate that you are creating a new moment
+        $('#editing-mode').val('0'); // Use '0' or any other value that indicates creation mode
         // Open the modal or navigate to the separate page for creating the new moment
         $('#create-moment-modal').modal('show');
     });
@@ -53,7 +55,6 @@ $(function()    {
     // Handle file input change event to initialize the Cropper.js instance
     $('#moment_image').on('change', function(event) {
         var input = event.target;
-
         // Ensure that a file is selected
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -74,14 +75,59 @@ $(function()    {
         }
     });
 
-    // handle form submission for creating a new moment
+    // handle form submission
     $('#new-moment-form').on('submit', function(event) {
         event.preventDefault();
+        
+        var editingMode = $('#editing-mode').val();
 
+        if (editingMode === '1') {       
+            var momentId = $('#moment_id').val(); // Get the moment ID
+            // Create a new FormData object
+            var formData = new FormData();
+            // Update fields to the form data object
+            formData.append('title', $('#title').val());
+            formData.append('excerpt', $('#excerpt').val());
+            formData.append('description', $('#description').val());
+            formData.append('start_date', $('#start_date').val());
+            formData.append('end_date', $('#end_date').val());
+            formData.append('moment_type', $('#moment_type').val());
+            formData.append('location', $('#location').val());  
+            // Get the cropped image data URL from Cropper.js
+            var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
+            // Convert the data URL to a Blob object (file)
+            var croppedImageFile = dataURLtoBlob(croppedImageDataURL);
+            // Append the cropped image file to the FormData object
+            formData.append('image', croppedImageFile, 'cropped_image.jpg');
+            // Log the FormData contents for debugging
+            for (var pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+                console.log(typeof croppedImageFile);
+            }
+            // Send the form data to the server to update the moment
+            var csrftoken = $('[name=csrfmiddlewaretoken]').val();
+            $.ajax({
+                headers: {
+                    "X-CSRFToken": csrftoken
+                },
+                    type: 'POST',
+                    url: '/keymoments/edit/' + momentId + '/',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Handle the success response (update UI or close modal)
+                    },
+                    error: function(error) {
+                        // Handle any errors that may occur during form submission
+                        console.log("Error en carga de datos");
+                        console.log(error.responseText);
+                    }
+                });
+        } else {
         // Create a new FormData object
         var formData = new FormData();
-
-        // Add other form fields to the form data object
+        // Update fields to the form data object
         formData.append('title', $('#title').val());
         formData.append('excerpt', $('#excerpt').val());
         formData.append('description', $('#description').val());
@@ -101,7 +147,7 @@ $(function()    {
         var croppedImageFile = dataURLtoBlob(croppedImageDataURL);
 
         // Append the cropped image file to the FormData object
-        formData.append('cropped_image', croppedImageFile, 'cropped_image.jpg');
+        formData.append('image', croppedImageFile, 'cropped_image.jpg');
 
         // Log the FormData contents for debugging
         for (var pair of formData.entries()) {
@@ -146,14 +192,10 @@ $(function()    {
             error: function(error) {
                 // Handle any errors that may occur during form submission
                 console.log ("Error en carga de datos")
-                console.log(response);
-                console.log(response.title);
-                console.log(response.start_date);
-                console.log(response.image_url);
-                console.log(pair[0] + ': ' + pair[1]);
-                console.log(typeof croppedImageFile);
+                console.log(error.responseText);
             }
         });
+        }
     });
 
     // Function to convert data URL to Blob
@@ -174,10 +216,10 @@ $(function()    {
     $('.edit-moment').on('click', function(event) {
         event.preventDefault();
         momentId = $(this).data('moment-id');
-
+        // Set editing mode in modal
+        $('#editing-mode').val(1);
         // Open the modal with the edit form
         $('#create-moment-modal').modal('show');
-
         // Fetch existing moment data via AJAX and pre-populate the form
         $.ajax({
             type: 'GET',
@@ -206,11 +248,12 @@ $(function()    {
     });
 
     // Handle form submission for editing a moment
-    $('#edit-moment-form').on('submit', function(event) {
+    $('#new-moment-form').on('submit', function(event) {
         event.preventDefault();
 
-        // Get the momentId from the data attribute
-        momentId = $(this).attr('data-moment-id');
+        // Use the momentId that was set when the "Edit" button was clicked
+        var formData = new FormData();
+        var momentId = $(this).attr('data-moment-id'); // Get the momentId from the form's data attribute
 
         // Create a new FormData object
         var formData = new FormData();

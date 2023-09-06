@@ -19,7 +19,7 @@ def key_moments_list(request):
 
 @login_required
 def create_key_moment(request):
-    """ View to edit moments"""
+    """ View to Create key moments"""
     if request.method == 'POST':
         form = KeyMomentsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -69,10 +69,11 @@ def edit_key_moment(request, moment_id):
         form = KeyMomentsForm(request.POST, instance=moment)
         if form.is_valid():
             # Update the image field with the cropped image (if provided)
-            cropped_image_data = form.cleaned_data.get('image')
+            cropped_image_data = request.FILES.get('cropped_image')
             if cropped_image_data:
                 moment.image = cropped_image_data
             form.save()
+
             return JsonResponse({'success': True})
         else:
             # Handle form validation errors
