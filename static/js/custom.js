@@ -126,7 +126,8 @@ $(function()    {
             formData.append('start_date', $('#start_date').val());
             formData.append('end_date', $('#end_date').val());
             formData.append('moment_type', $('#moment_type').val());
-            formData.append('location', $('#location').val());  
+            formData.append('location', $('#location').val());
+            formData.append('status', '1');  
             // Get the cropped image data URL from Cropper.js
             var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
             // Convert the data URL to a Blob object (file)
@@ -151,6 +152,11 @@ $(function()    {
                     contentType: false,
                     success: function(response) {
                         // Handle the success response (update UI or close modal)
+                        // Close the modal or navigate back to the timeline page
+                    $('#create-moment-modal').modal('hide');
+                    // Reset the form fields for the next moment creation
+                    $('#new-moment-form')[0].reset();
+                    location.reload();
                     },
                     error: function(error) {
                         // Handle any errors that may occur during form submission
@@ -170,7 +176,7 @@ $(function()    {
             formData.append('moment_type', $('#moment_type').val());
             formData.append('location', $('#location').val());
             // Check the checkbox state and set status accordingly
-            var statusValue = $('#status-checkbox').prop('checked') ? 0 : 1;
+            var statusValue = $('#status').prop('checked') ? 0 : 1;
             formData.append('status', statusValue);
             // Get the cropped image data URL from Cropper.js
             var croppedImageDataURL = cropper.getCroppedCanvas().toDataURL();
