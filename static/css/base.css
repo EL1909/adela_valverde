@@ -213,6 +213,15 @@ a.category-badge > span.badge:hover {
   text-align: left;
 }
 
+.camino {
+  padding: 5px;
+}
+
+.edicion  {
+  padding: 100px 0 20px 0;
+  font-size: 1rem;
+}
+
 .history-heading  {
   height: 50px;
   color: #666666;
@@ -245,7 +254,7 @@ a.category-badge > span.badge:hover {
   content: attr(data-dates);
   position: absolute;
   left: 2.5em;
-  top: 3em;
+  top: 2em;
   display: block;
   font-family: "Exo", sans-serif;
   font-weight: 500;
@@ -258,7 +267,7 @@ a.category-badge > span.badge:hover {
   width: 12px;
   height: 12px;
   display: block;
-  top: 2.4em;
+  top: 2em;
   position: absolute;
   left: -6px;
   border-radius: 12px;

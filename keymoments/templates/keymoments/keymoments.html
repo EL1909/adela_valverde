@@ -7,12 +7,12 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4 col-lg-4 order-1">
+        <div class="col-md-4 col-lg-4 order-1 camino">
             <div class="row quiensoy">
                 <div class="col-12 history-heading">
                     <h3>Mi Camino</h3>
                     <p>Selecciona un momento</p>
-                    <div class="history-items">
+                    <div class="row history-items">
                         {% for key_moment in key_moments_list %}
                         <div class="col-10 timeline-item" data-dates="{{ key_moment.start_date }}">
                             <a href="#">
@@ -24,7 +24,7 @@
                                 {% endif %}
                             </a>
                         </div>
-                        <div class="col-1">
+                        <div class="col-2 edicion">
                             {% if request.user.is_authenticated %}
                             <a href="#" class="edit-moment" data-moment-id="{{ key_moment.id }}"><i class="fa-solid fa-pencil fa-sm"></i></a>
                             <a href="#" class="delete-moment" data-moment-id="{{ key_moment.id }}"><i class="fa-solid fa-trash-can"></i></a>

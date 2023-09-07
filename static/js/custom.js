@@ -119,7 +119,6 @@ $(function()    {
         if (editingMode === '1') {       
             // Update fields to the form data object
             momentId = $('#new-moment-form').attr('data-moment-id');// Get the moment ID
-            console.log('LOADED momentId:', momentId); // Add this line to log the value
             formData.append('title', $('#title').val());
             formData.append('excerpt', $('#excerpt').val());
             formData.append('description', $('#description').val());
