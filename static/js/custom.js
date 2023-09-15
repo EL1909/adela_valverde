@@ -240,7 +240,7 @@ $(function()    {
         return new Blob([u8arr], { type: mime });
     }
 
-    // Handle action on "Delete" link
+    // Handle action on "Delete" link for key moments
     $('.delete-moment').on('click', function(event) {
         event.preventDefault();
 
@@ -264,4 +264,17 @@ $(function()    {
             });
         }
     });
+
+    // Handle action on "Delete" link for Products
+    const deleteLink = document.getElementById('delete-product-link');
+            if (deleteLink) {
+                deleteLink.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+                    const confirmation = confirm('Are you sure you want to delete this product?');
+                    if (confirmation) {
+                        // If the user confirms, navigate to the delete view
+                        window.location.href = this.getAttribute('href');
+                    }
+                });
+            }
 });
