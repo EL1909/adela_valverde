@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Adela Valverde's web history">
+    <meta name="description" content="Adela Valverde's web">
     <meta name="keywords" content="to, be, determined">
     <meta name="EL1909" content="el1909@gmail.com">
     {% endblock %}
@@ -35,6 +35,7 @@
     <title>Adela Valverde {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
+    <div id="overlay"></div>
     <!-- Header -->
     <header class="container-fluid">
       <!-- Top Bar -->
@@ -85,11 +86,10 @@
       </div>
       <!-- Main Menu -->
       <div class="row">
-          <nav class="navbar navbar-expand-sm" id="main-nav-container">
+          <nav class="navbar navbar-expand-md" id="main-nav-container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-              <span><i class="fa-solid fa-bars"></i></span>
+              <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
             </button>
-            {% include 'includes/mobile-top-header.html' %}
             {% include 'includes/main-nav.html' %}
           </nav>
       </div>
@@ -143,6 +143,13 @@
     <!-- Load local Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+    <!-- <script>
+      $(document).ready(function () {
+        $(".navbar-toggler").click(function () {
+          $("#overlay").toggle();
+        });
+      });
+    </script>     -->
     <script>
       setTimeout(function () {
         let messages = document.getElementById('msg');
