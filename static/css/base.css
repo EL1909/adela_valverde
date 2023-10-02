@@ -23,6 +23,10 @@ a:hover, a:active, a:focus {
 .content  {
   min-height: 100vh;
 }
+
+.publications {
+  height: 25vh;
+}
   
 /* Header ---------------------------------------*/
 
@@ -154,6 +158,16 @@ footer {
   color: #fafafa;
   height: 100px;
 
+}
+.list-inline {
+  float: right;
+  margin-top: 25px;
+}
+
+.social-links a {
+  color: #fafafa;
+  font-size: 2rem;
+  padding: 10px;
 }
 
 
