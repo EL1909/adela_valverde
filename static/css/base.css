@@ -1,10 +1,11 @@
 /* General ---------------------------------------*/
 html    {
-  height: 100%;
+  min-height: 100%;
   width: auto;
 }
 
 body {
+  min-height: 100%;
   color: #666666;
   font-family: "inconsolata", sans-serif;
   background-color: #ffffff;
@@ -17,6 +18,10 @@ a {
   
 a:hover, a:active, a:focus {
   color: #7199d0;
+}
+
+.content  {
+  min-height: 100vh;
 }
   
 /* Header ---------------------------------------*/
@@ -131,19 +136,33 @@ a:hover, a:active, a:focus {
 
 /* ------------------------------------------ Footer */
 
-footer  {
+footer {
+  height: 100px;
   position: relative;
   bottom: 0;
+}
+
+
+#footer_img {
+  background-image: url('/media/footer.jpg');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-blend-mode:normal;
+  background-color: #191b27;
+  background-position-x:left;
+  background-position-y: 20%;
+  color: #fafafa;
   height: 100px;
 
 }
+
 
 /* Homepage ---------------------------------------*/
 
 .homepage {
   background-color: #6666664a;
   background-image: url('/media/BGimg.jpg');
-  background-size:contain;
+  background-size: contain;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-position: left;
@@ -356,8 +375,8 @@ a.category-badge > span.badge:hover {
     .homepage {
       background-size: cover;
       background-position: bottom;
-      height: 80%;
-      width: auto;
+      height: auto;
+      width: 100%;
     }
     h1  {
       font-size: 2rem;
@@ -385,7 +404,6 @@ a.category-badge > span.badge:hover {
     #main-nav {
       position: absolute;
       top: 10px;
-      left: 15px;
       display: flex;
       flex-direction:column;
       background-color: #fff;
@@ -403,13 +421,6 @@ a.category-badge > span.badge:hover {
       padding: 0 1rem;
       font-weight: bolder;
       text-align: right;
-    }
-
-
-    .dropdown-menu  {
-      position: relative;
-      top: 0;
-      left: 10px;
     }
     
     .navbar-nav {
@@ -434,11 +445,6 @@ a.category-badge > span.badge:hover {
       transition: background-color 0.3s;
     }
     
-    .nav-item:hover .dropdown-menu {
-      transform: translateX(0); /* Show on hover */
-      opacity: 1;
-      visibility: visible;
-    }
     /* Home Banner */
     .main-content {
       top: 40px;
