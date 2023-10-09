@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'keymoments',
     'googleapiclient',
     'decouple',
+    'youtube_posts',
 ]
 
 MIDDLEWARE = [
