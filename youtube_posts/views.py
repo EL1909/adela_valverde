@@ -2,7 +2,7 @@ import os
 from googleapiclient.discovery import build
 from django.shortcuts import render
 from embed_video.fields import EmbedVideoField
-from youtube_data_api import YouTubeDataApi
+# from youtube_data_api import YouTubeDataApi
 from decouple import config
 
 
@@ -30,7 +30,7 @@ def youtube_posts(request):
 
     # Replace 'channelId' with your channel's ID or 'mine' to fetch your own videos
     response = youtube.search().list(
-        channelId='UCMZJj9l4TvNnNDifpjEno9g',
+        channelId='UCvxBjb0KE26mADhgkECn8rQ',
         type='video',
         order='date',
         part='id',
