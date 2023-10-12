@@ -1,11 +1,27 @@
 import os
 from googleapiclient.discovery import build
 from django.shortcuts import render
+from django_embed_video.fields import EmbedVideoField
+from youtube_data_api import YouTubeDataApi
 from decouple import config
 
 
 def simple_view(request):
-    return render(request, 'youtube_posts/simple_template.html') 
+    return render(request, 'youtube_posts/simple_template.html')
+
+def video_list(request):
+    youtube_api = YoutubeDataApi()
+
+    # Retrieve a list of all the videos on the Youtube Channel with this ID
+    videos = youtube_api.videos_list(part='snippet', channelId='UCvxBjb0KE26mADhgkECn8rQ')
+
+    # Iterate over the list of videos and display each video on the Template
+    context = {
+        'videos' = videos
+    }
+    
+    return render (request, 'youtube_posts/simple_template.html', context)
+
 
 
 def youtube_posts(request):

@@ -1,10 +1,17 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
 <html>
-<head>
-    <title>Simple Template</title>
-</head>
-<body>
-    <h1>This is a Simple Template</h1>
-    <p>You can modify this template to test its connectivity.</p>
-</body>
-</html>
+    <head>
+        <title>Simple Template</title>
+    </head>
+    <body>
+        <h1>This is a Simple Template</h1>
+        <p>You can modify this template to test its connectivity.</p>
+        {% for video in videos %}
+            {% video video 'small' %}
+        {% endfor %}
+    </body>
+    </html>
+{% endblock %}
