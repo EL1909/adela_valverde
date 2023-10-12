@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'googleapiclient',
     'decouple',
     'youtube_posts',
+    'embed_video'
 ]
 
 MIDDLEWARE = [

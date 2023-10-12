@@ -5,8 +5,8 @@ from decouple import config
 
 
 def simple_view(request):
-    return render(request, 'youtube_posts/simple_template.html')
-    
+    return render(request, 'youtube_posts/simple_template.html') 
+
 
 def youtube_posts(request):
     youtube_api_key = config('YOUTUBE_API_KEY')  # Get your API key from settings
@@ -20,6 +20,8 @@ def youtube_posts(request):
         part='id',
         maxResults=10  # You can adjust the number of videos to display
     ).execute()
+
+    print(response)
 
     video_ids = [item['id']['videoId'] for item in response['items']]
     video_details = []
@@ -35,4 +37,4 @@ def youtube_posts(request):
         'video_details': video_details,
     }
 
-    return render(request, 'youtube_posts.html', context)
+    return render(request, 'youtube_posts/youtube_posts.html', context)
