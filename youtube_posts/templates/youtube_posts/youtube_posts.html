@@ -16,12 +16,12 @@
             <h3>YouTube Posts</h3>
             <ul>
             <!-- Loop through YouTube posts and display them -->
-            {% for post in youtube_posts %}
+            {% for post in video_data %}
                 <li>
-                    <h2>{{ post.title }}</h2>
-                    <p>{{ post.description }}</p>
-                    <p>Published on: {{ post.published_date }}</p>
-                    <iframe width="560" height="315" src="{{ post.video_url }}" frameborder="0" allowfullscreen></iframe>
+                    <h2>{{ post.snippet.title }}</h2>
+                    <p>{{ post.snippet.description }}</p>
+                    <p>Published on: {{ post.snippet.publishedAt }}</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ post.snippet.resourceId.videoId }}" frameborder="0" allowfullscreen></iframe>
                 </li>
             {% empty %}
                 <p>No YouTube posts available.</p>
