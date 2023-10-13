@@ -4,29 +4,35 @@
 <div class="overlay"></div>
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6">
-            <hr>
-            <h2 class="logo-font mb-4">El Dia Siete</h2>
-            <h5 class="text-muted">Podcast</h5>
-            <hr>
+        <div class="col-md-3 col-12">
+            <div class="row">
+                <div class="col12">
+                    <hr>
+                    <h2 class="logo-font">El Dia Siete</h2>
+                    <h5 class="text-muted">Podcast</h5>
+                    <hr>
+                </div>
+                <div class="col-12 diasiete">
+                    <p>descripcion del podcast</p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <h3>YouTube Posts</h3>
-            <ul>
-            <!-- Loop through YouTube posts and display them -->
-            {% for post in video_data %}
-                <li>
-                    <h2>{{ post.snippet.title }}</h2>
-                    <p>{{ post.snippet.description }}</p>
-                    <p>Published on: {{ post.snippet.publishedAt }}</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ post.snippet.resourceId.videoId }}" frameborder="0" allowfullscreen></iframe>
-                </li>
-            {% empty %}
-                <p>No YouTube posts available.</p>
-            {% endfor %}
-            </ul>
+        <div class="col-md-9 col-12 video-list">
+            <div>
+                <ul>
+                    <!-- Loop through YouTube posts and display them -->
+                    {% for post in video_data %}
+                    <li>
+                        <h4>
+                            <a href="https://www.youtube.com/watch?v={{ post.snippet.resourceId.videoId }}" target="_blank">{{ post.snippet.title }}</a>
+                        </h4>
+                        <p class="text-muted">Subido: {{ post.snippet.publishedAt }}</p>
+                    </li>
+                    {% empty %}
+                        <p>No YouTube posts available.</p>
+                    {% endfor %}
+                </ul>    
+            </div>
         </div>
     </div>
 </div>

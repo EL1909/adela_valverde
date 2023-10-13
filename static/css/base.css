@@ -391,6 +391,20 @@ a.category-badge > span.badge:hover {
 }
 
 
+/*--------------------------------- Video Publications */
+
+.diasiete {
+  text-align: right;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.video-list {
+  margin-top: 30px;
+  max-height: 400px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
 
 /*---------------------------------------- Alerts */
 
