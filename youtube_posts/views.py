@@ -2,7 +2,7 @@ import os
 from googleapiclient.discovery import build
 from django.shortcuts import render
 from embed_video.fields import EmbedVideoField
-# from youtube_data_api import YouTubeDataApi
+from youtube_data_api import YouTubeDataApi
 from decouple import config
 
 
