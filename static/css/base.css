@@ -21,7 +21,9 @@ a:hover, a:active, a:focus {
 }
 
 .content  {
-  min-height: 100vh;
+  min-height: calc(100vh - 100px); /* Adjust this value to account for your header's height */
+  display: flex; /* Use flex layout */
+  flex-direction: column; /* Stack child elements vertically */
 }
 
 .publications {
@@ -544,7 +546,6 @@ a.category-badge > span.badge:hover {
       background-color: rgba(211, 179, 34, 0.777);
       transition: background-color 0.3s;
     }
-    
 
     /* Home Banner */
     .homepage {
@@ -566,9 +567,12 @@ a.category-badge > span.badge:hover {
         z-index: 9999;
     }
 
-
-    
-
+    .history-heading  {
+      padding: 10px;
+      background-color: #6666668d;
+      color: #fafafa;
+      margin: 0;
+    }
 
     .history-items  {
       background-image: url(/media/fondo-banner.png);
@@ -581,10 +585,11 @@ a.category-badge > span.badge:hover {
     }
 
     .diasiete {
+      padding: 10px;
     }
     
     .video-list {
-      margin-top: 30px;
+      margin-top: 10px;
       max-height: 400px;
       overflow-y: scroll;
       scroll-behavior: smooth;
@@ -594,7 +599,9 @@ a.category-badge > span.badge:hover {
       background-repeat: no-repeat;
       background-size: 40%;
       background-position-x: 90%;
-      background-position-y: 150%;
+      background-position-y: 50%;
+      border-top: 1px solid #6666664a;
+      font-size: smaller;
     }
 
   }
