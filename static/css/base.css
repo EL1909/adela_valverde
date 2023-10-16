@@ -47,11 +47,6 @@ a:hover, a:active, a:focus {
   margin: 0;
 }
 
-/* .navbar-nav {
-  display: inline-block;
-  align-items: right;
-  color: #fff;
-} Confirma si el comportamiento esta repetido, */
 
 #topbar .nav-item {
   display: inline-block;
@@ -70,16 +65,16 @@ a:hover, a:active, a:focus {
 
 #main-nav-container {
   position: absolute;
+  bottom: auto;
+  left: 50%;
   display: flex;
   justify-content: center;
   width: fit-content;
-  bottom: auto;
-  left: 50%;
+  height: 6px;
   z-index: 2;
   background-color: #666666;
   padding: 0;
   margin: 0;
-  height: 6px;
   opacity: 1;
   border-radius: 15px 15px 0 0;
   transform: translateX(-50%) translateY(-90%); /* Center the container relative to its own width */
@@ -88,6 +83,7 @@ a:hover, a:active, a:focus {
 }
 
 #main-nav {
+  position: relative;
   max-width: fit-content;
   display: flex;
   opacity: 0;
@@ -131,12 +127,28 @@ a:hover, a:active, a:focus {
 
 .dropdown-menu  {
   display: none;
+  position: relative;
+}
+.user-options .dropdown-menu  {
+  font-size: 1rem; /* Adjust the font size */
+  color: #666666;
   position: absolute;
+  top: 50px;
+  left:-50px;
+  width: 25vh;
 }
 
-.nav-item:hover .dropdown-menu  {
-  display: block;
+/* Style the hover effect for dropdown items */
+#user-options .dropdown-item:hover {
+  background-color: #f0f0f0; /* Background color on hover */
+  color: #666666; /* Text color on hover */
 }
+
+/* Main Nav (iphone bar) */
+.nav-item:hover .dropdown-menu  {
+  display:block;
+}
+
 
 /* ------------------------------------------ Footer */
 
@@ -223,22 +235,13 @@ footer {
   height: 100px;
 }
 
-/* #my-content {
-  background-image: url('/media/fondo-banner.png');
-  background-size:contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-blend-mode: multiply;
-  color: #666666;
-} */
-
 .my-heading {
   font-size: 4rem;
 }
 
 .homepage .btn  {
   font-size: 1em;
-  padding: 5px;
+  padding: 10px;
   width: max-content;
 }
 
@@ -431,7 +434,7 @@ a.category-badge > span.badge:hover {
 /*---------------------------------------- Alerts */
 
 .alert-fixed {
-  position:absolute; 
+  position:relative; 
   top: 100px; 
   left: 0; 
   width: 100%;
@@ -462,6 +465,7 @@ a.category-badge > span.badge:hover {
     #topbar {
       position: relative;
       height: 75px;
+      padding: 10px;
       top: 0;
       left: 0;
     }
@@ -469,10 +473,15 @@ a.category-badge > span.badge:hover {
     /* Hamburger Button*/
     .navbar-toggler {
       position: absolute;
-      top: -45px;
-      right: -180px;
-      z-index: 1000;
+      top: 25px;
+      right: 20px;
+      z-index: 999;
       font-size: 1rem;
+      padding: 10px;
+    }
+
+    #mobile-menu  {
+      width: 100%;
     }
 
     /* Inside Hamburger Menu*/
@@ -485,7 +494,7 @@ a.category-badge > span.badge:hover {
       line-height: 2;
       z-index: 1001;
       height: fit-content;
-      width: 100vw;
+      width: 100vh;
       padding: 10px 2px;
       margin: 10px;
     }
