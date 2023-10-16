@@ -392,11 +392,21 @@ a.category-badge > span.badge:hover {
 
 
 /*--------------------------------- Video Publications */
+.columna-derecha  {
+  display: flex;
+  flex-direction: column;
+  margin: none;
+  margin: 0 0 20px 0;
+}
 
 .diasiete {
+  align-items: right;
   text-align: right;
   max-height: 400px;
   overflow-y: scroll;
+  order: 1;
+  margin: none;
+  padding: none;
 }
 
 .video-list {
@@ -404,7 +414,19 @@ a.category-badge > span.badge:hover {
   max-height: 400px;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  background-image: url(/media/fondo-banner.png);
+  background-color: #ffffffb5;
+  background-blend-mode: color-burn;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position-x: 90%;
+  background-position-y: 150%;
+  font-size: 90%;
+  text-align: justify;
+  border-left: 1px solid #6666664a;
+  padding: 1em 6em 0em 1em;
 }
+
 
 /*---------------------------------------- Alerts */
 
@@ -443,9 +465,6 @@ a.category-badge > span.badge:hover {
       top: 0;
       left: 0;
     }
-
-    /* Hamburger Menu GENERAL*/
-    
 
     /* Hamburger Button*/
     .navbar-toggler {
@@ -514,6 +533,25 @@ a.category-badge > span.badge:hover {
     .my-subheading {
         font-size: 1rem;
         z-index: 9999;
+    }
+
+    history-heading
+
+    .diasiete {
+    }
+    
+    .video-list {
+      margin-top: 30px;
+      max-height: 400px;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      background-image: url(/media/fondo-banner.png);
+      background-color: #ffffffb5;
+      background-blend-mode: color-burn;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      background-position-x: 90%;
+      background-position-y: 150%;
     }
 
   }
