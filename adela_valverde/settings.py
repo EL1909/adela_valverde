@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['adelavalverde-f7008eb2a6fd.herokuapp.com', 'localhost','8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
 
 CSRF_TRUSTED_ORIGINS = ['https://localhost.8000/','https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
 
