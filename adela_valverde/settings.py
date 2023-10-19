@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
-from decouple import config
 import dj_database_url
+from decouple import config
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +28,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['adelavalverde-f7008eb2a6fd.herokuapp.com', 'localhost','8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['adelavalverde-f7008eb2a6fd.herokuapp.com', 'localhost', '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['https://localhost.8000/','https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://localhost.8000/', 'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
 
 # Application definition
 
@@ -128,7 +128,6 @@ DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -167,7 +166,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
