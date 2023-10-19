@@ -1,1 +1,1 @@
-web: gunicorn adelavalverde.wsgi
+web: gunicorn adela_valverde.wsgi
