@@ -1,0 +1,629 @@
+/* General ---------------------------------------*/
+html    {
+  min-height: 100%;
+  width: auto;
+}
+
+body {
+  min-height: 100%;
+  color: #666666;
+  font-family: "inconsolata", sans-serif;
+  background-color: #ffffff;
+}
+  
+a {
+  color: #666666;
+  text-decoration: none;
+}
+  
+a:hover, a:active, a:focus {
+  color: #7199d0;
+}
+
+.content  {
+  min-height: calc(100vh - 100px); /* Adjust this value to account for your header's height */
+  display: flex; /* Use flex layout */
+  flex-direction: column; /* Stack child elements vertically */
+}
+
+.publications {
+  height: 25vh;
+}
+  
+/* Header ---------------------------------------*/
+
+#topbar {
+  position: relative;
+  height: 100px;
+  background-color: #ffffff;
+  margin: 0%;
+}
+
+.logo {
+  margin: none;
+  padding: 1rem 0;
+  color: #666666;
+}
+
+.logo h1  {
+  margin: 0;
+}
+
+
+#topbar .nav-item {
+  display: inline-block;
+  padding: 1.5rem 1rem;
+  margin: none;
+  align-items: right;
+  color: #666666;
+}
+
+.dropdown-menu .show {
+  position: absolute;
+  transform: translate3d(-5px 50px 10px);
+}
+
+/* Main Navigation ----------------------------*/
+
+#main-nav-container {
+  position: absolute;
+  bottom: auto;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  height: 6px;
+  z-index: 2;
+  background-color: #666666;
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  border-radius: 15px 15px 0 0;
+  transform: translateX(-50%) translateY(-90%); /* Center the container relative to its own width */
+  transform-origin: bottom;
+  transition: height 0.5s ease;
+}
+
+#main-nav {
+  position: relative;
+  max-width: fit-content;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
+}
+
+#main-nav-container:hover #main-nav {
+  opacity: 1; /* Show the menu items when hovering the container */
+  pointer-events: auto;
+}
+
+.navbar-nav {
+  display: inline-block;
+  align-items: right;
+  color: #fff;
+  position: relative; /* Add this to enable absolute positioning of #main-nav */
+}
+
+#main-nav .nav-item {
+  display: inline-block;
+  align-items: center;
+  color: #fff;
+}
+
+#main-nav .nav-link {
+  display: inline;
+  font-size: 1rem;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+#main-nav a:hover {
+  color: #fafafa;
+  background-color: #6666664a;
+}
+
+#main-nav-container:hover {
+  height: 30px; /* Change the height on hover to show the full menu */
+}
+
+.dropdown-menu  {
+  display: none;
+  position: relative;
+}
+.user-options .dropdown-menu  {
+  font-size: 1rem; /* Adjust the font size */
+  color: #666666;
+  position: absolute;
+  top: 50px;
+  left:-50px;
+  width: 25vh;
+}
+
+/* Style the hover effect for dropdown items */
+#user-options .dropdown-item:hover {
+  background-color: #f0f0f0; /* Background color on hover */
+  color: #666666; /* Text color on hover */
+}
+
+/* Main Nav (iphone bar) */
+.nav-item:hover .dropdown-menu  {
+  display:block;
+}
+
+
+/* ------------------------------------------ Footer */
+
+footer {
+  height: 100px;
+  position: relative;
+  bottom: 0;
+}
+
+
+#footer_img {
+  background-image: url('/media/footer.jpg');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-blend-mode:normal;
+  background-color: #191b27;
+  background-position-x:left;
+  background-position-y: 20%;
+  color: #fafafa;
+  height: 100px;
+
+}
+.list-inline {
+  float: right;
+  margin-top: 25px;
+}
+
+.social-links a {
+  color: #fafafa;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.esfuerzo {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  background-color: #191b27;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.esfuerzo::before, .esfuerzo::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.625);
+  width: 100%;
+}
+
+.esfuerzo::before {
+  top: 0;
+}
+
+.esfuerzo::after {
+  bottom: 0;
+}
+
+/* Homepage ---------------------------------------*/
+
+.homepage {
+  background-color: #6666664a;
+  background-image: url('/media/BGimg.jpg');
+  background-size: contain;
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-position: left;
+  color: #666666;
+  min-height: 90vh;
+  margin-top: 0;
+  position: relative;
+}
+
+.main-content {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  text-align: right;
+  max-width: 40%;
+  height: 100px;
+}
+
+.my-heading {
+  font-size: 4rem;
+}
+
+.homepage .btn  {
+  font-size: 1em;
+  padding: 10px;
+  width: max-content;
+}
+
+.btn:hover  {
+  background-color: #7199d0;
+  color: #fff;
+  border: 0.5px solid #666666;
+}
+
+/* Products ----------------------------------------*/
+
+a.category-badge > span.badge:hover {
+  background: #1770c9;
+  color: #fff;
+}
+
+.btn-button {
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.btn-link {
+  cursor: pointer;
+}
+
+
+
+/* Key Moments -----------------------------------*/
+
+.quiensoy {
+  text-align: left;
+}
+
+.camino {
+  padding: 5px;
+}
+
+.edicion  {
+  padding: 100px 0 20px 0;
+  font-size: 1rem;
+}
+
+.history-heading  {
+  height: 50px;
+  color: #666666;
+  margin: 20px;
+}
+
+.history-items  {
+  font-family: "inconsolata", sans-serif;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.timeline-item {
+  margin: 0;
+  padding: 4em 1em 0em 2em;
+  position: relative;
+  color: #666666;
+  border-left: 1px solid #6666664a;
+}
+
+.timeline-item p {
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item:before {
+  content: attr(data-dates);
+  position: absolute;
+  left: 2.5em;
+  top: 2em;
+  display: block;
+  font-family: "Exo", sans-serif;
+  font-weight: 500;
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item:after {
+  width: 12px;
+  height: 12px;
+  display: block;
+  top: 2em;
+  position: absolute;
+  left: -6px;
+  border-radius: 12px;
+  content: '';
+  background: #fafafa;
+}
+
+.description-box  {
+  overflow-y: scroll;
+  height:370px;
+  font-size: 1rem;
+  text-align: left;
+  border-left: 1px solid #6666664a;
+  padding: 1em 2em 0em 2em;
+}
+
+#key-moment-image {
+  background-image: url(/media/quiensoy.jpg);
+  background-size: cover;
+  background-repeat:no-repeat;
+  overflow: scroll;
+  height: 450px;
+  max-width: auto;
+  border: solid 2px #ffffff;
+  z-index: 1;
+}
+
+
+/* Adjust modal size and position */
+.modal-dialog {
+  max-width: 800px;
+  margin: 1.75rem auto; /* Adjust as needed to center the modal */
+}
+
+.modal-content {
+  position: relative; /* Fix the modal content positioning */
+}
+
+/* Ensure Cropper container is visible and scrollable */
+.cropper-container {
+  width: 100%; 
+  max-height: 360px; /* You can adjust the height as needed */
+  overflow: hidden; /* Hide any overflow outside the container */
+  margin: solid 5px 0 auto;
+}
+
+#cropper-image  {
+  max-width: auto;
+  max-height: 360px; /* You can adjust the height as needed */
+  display: block;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Adjust modal body to scroll if needed */
+.modal-body {
+  max-height: 500px; /* Limit the height of the modal body */
+  overflow-y: auto; /* Add scrollbars if content exceeds the height */
+}
+
+
+/*--------------------------------- Video Publications */
+.columna-derecha  {
+  display: flex;
+  flex-direction: column;
+  margin: none;
+  margin: 0 0 20px 0;
+}
+
+.diasiete {
+  align-items: right;
+  text-align: right;
+  max-height: 400px;
+  overflow-y: scroll;
+  order: 1;
+  margin: none;
+  padding: none;
+}
+
+.video-list {
+  margin-top: 30px;
+  max-height: 400px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-image: url(/media/fondo-banner.png);
+  background-color: #ffffffb5;
+  background-blend-mode: color-burn;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position-x: 90%;
+  background-position-y: 150%;
+  font-size: 90%;
+  text-align: justify;
+  border-left: 1px solid #6666664a;
+  padding: 1em 6em 0em 1em;
+}
+
+
+/*---------------------------------------- Alerts */
+
+.alert-fixed {
+  position:relative; 
+  top: 100px; 
+  left: 0; 
+  width: 100%;
+  z-index: 2000; 
+  border-radius:0px
+}
+
+/*---------------------------------------- Mobile Menu */
+
+/* Media Queries---------------------------------- */
+
+  @media (max-width: 576px) {
+    .container-fluid  {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: fit-content;
+    }
+    h1  {
+      font-size: 2rem;
+    }    
+    #topbar {
+      position: relative;
+      height: 75px;
+      padding:0;
+      top: 0;
+      left: 0;
+    }
+
+    .logo {
+      padding: 10px 0;
+    }
+
+    /* Hamburger Button*/
+    #main-nav-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      height: 5px;
+      z-index: 2;
+      background-color: #666666;
+    }
+
+    .navbar-toggler {
+      position: relative;
+      display: flex;
+      top:  30px;
+      right: 30px;
+      z-index: 999;
+      font-size: 1rem;
+      color: #666666;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Inside Hamburger Menu*/
+    #main-nav {
+      position: absolute;
+      top: 50px;
+      right: 5vw;
+      display: flex;
+      flex-direction:column;
+      background-color: #fff;
+      line-height: 2;
+      z-index: 1001;
+      height: auto;
+      width: 50vw;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+
+    #main-nav .nav-link {
+      font-size: 1.1rem;
+      color: #666666;
+      padding: 5px 0;
+      width: 50vw;
+      font-weight: bolder;
+      text-align: right;
+    }
+    
+    .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 5px;
+      text-align: right;
+    }
+    
+    #main-nav .nav-item {
+      width: 100%;
+    }
+    .nav-item{
+      position: relative;
+      display: block;
+      padding: 2px;
+      margin: 2px 0;
+      border-radius: 5px;
+      text-align: right;
+    }
+
+    .nav-item:hover {
+      background-color: rgba(211, 179, 34, 0.777);
+      transition: background-color 0.3s;
+    }
+
+    /* Home Banner */
+    .homepage {
+      background-size:contain;
+      min-height: 90vh;
+    }
+  
+    .main-content {
+      top: 30px;
+      right: 30px;
+      text-align: right;
+      width: 100%;
+    }
+    .my-heading {
+        font-size: 1.5rem;
+    }
+    .my-subheading {
+        font-size: 1rem;
+        z-index: 9999;
+    }
+
+    .history-heading  {
+      padding: 10px;
+      background-color: #6666668d;
+      color: #fafafa;
+      margin: 0;
+    }
+
+    .history-items  {
+      background-image: url(/media/fondo-banner.png);
+      background-color: #ffffffb5;
+      background-blend-mode: color-burn;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      background-position-x: 90%;
+      background-position-y: 120%;
+    }
+
+    .diasiete {
+      padding: 10px;
+    }
+    
+    .video-list {
+      margin-top: 10px;
+      max-height: 400px;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      background-image: url(/media/fondo-banner.png);
+      background-color: #ffffffb5;
+      background-blend-mode: color-burn;
+      background-repeat: no-repeat;
+      background-size: 40%;
+      background-position-x: 90%;
+      background-position-y: 50%;
+      border-top: 1px solid #6666664a;
+      font-size: smaller;
+    }
+
+  }
+
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .my-heading {
+      font-size: 3rem;
+  }
+
+  .my-subheading {
+      font-size: 1.25rem;
+  }
+
+  #my-content {
+      position: static;
+  }
+}
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
