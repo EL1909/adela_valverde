@@ -28,9 +28,17 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['adelavalverde-f7008eb2a6fd.herokuapp.com', 'localhost', '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = [
+    'localhost',
+    '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
+    'adelavalverde-560e226e8075.herokuapp.com'
+    ]
 
-CSRF_TRUSTED_ORIGINS = ['https://localhost.8000/', 'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu105.gitpod.io']
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost.8000',
+    'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
+    'adelavalverde-560e226e8075.herokuapp.com'
+    ]
 
 # Application definition
 
@@ -45,13 +53,13 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'googleapiclient',
+    'decouple',
+    'embed_video',
     'home',
     'products',
     'keymoments',
-    'googleapiclient',
-    'decouple',
-    'youtube_posts',
-    'embed_video'
+    'youtube_posts'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +91,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  # required by allauth
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
