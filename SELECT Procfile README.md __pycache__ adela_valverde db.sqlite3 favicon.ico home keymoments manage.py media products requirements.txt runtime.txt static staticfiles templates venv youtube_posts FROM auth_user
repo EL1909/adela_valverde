@@ -1,0 +1,27 @@
+                     List of relations
+ Schema |             Name              | Type  |  Owner   
+--------+-------------------------------+-------+----------
+ public | account_emailaddress          | table | vywamrvh
+ public | account_emailconfirmation     | table | vywamrvh
+ public | auth_group                    | table | vywamrvh
+ public | auth_group_permissions        | table | vywamrvh
+ public | auth_permission               | table | vywamrvh
+ public | auth_user                     | table | vywamrvh
+ public | auth_user_groups              | table | vywamrvh
+ public | auth_user_user_permissions    | table | vywamrvh
+ public | django_admin_log              | table | vywamrvh
+ public | django_content_type           | table | vywamrvh
+ public | django_migrations             | table | vywamrvh
+ public | django_session                | table | vywamrvh
+ public | django_site                   | table | vywamrvh
+ public | keymoments_key_moments        | table | vywamrvh
+ public | keymoments_key_moments_likes  | table | vywamrvh
+ public | products_category             | table | vywamrvh
+ public | products_product              | table | vywamrvh
+ public | socialaccount_socialaccount   | table | vywamrvh
+ public | socialaccount_socialapp       | table | vywamrvh
+ public | socialaccount_socialapp_sites | table | vywamrvh
+ public | socialaccount_socialtoken     | table | vywamrvh
+ public | youtube_posts_video           | table | vywamrvh
+(22 rows)
+

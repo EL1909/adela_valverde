@@ -156,8 +156,9 @@ a:hover, a:active, a:focus {
 
 footer {
   height: 100px;
-  position: relative;
-  bottom: 0;
+  /* position: relative;
+  bottom: 0; */
+  border-top: 5px solid #6666664a;
 }
 
 
@@ -272,7 +273,26 @@ a.category-badge > span.badge:hover {
   cursor: pointer;
 }
 
+.book-description  {
+  overflow-y: scroll;
+  height:250px;
+  font-size: 1rem;
+  text-align: left;
+  border-left: 1px solid #6666664a;
+  padding: 1em 2em 0em 2em;
+}
 
+.buybook  {
+  
+  background-color: #1360aec7;
+  padding: 3px;
+  border-radius: 15px;
+}
+
+.buybook a{
+  color: #fff;
+  padding: 5px;
+}
 
 /* Key Moments -----------------------------------*/
 
@@ -432,16 +452,39 @@ a.category-badge > span.badge:hover {
   padding: 1em 6em 0em 1em;
 }
 
+/*-------------------------------------- Usuarios */
+.user-heading {
+height: 50px;
+color: #666666;
+margin: 20px 0 0 0;
+text-align: center;
+}
+
+.user-content {
+  margin: 30px;
+  min-height: 400px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-image: url(/media/fondo-banner.png);
+  background-color: #ffffffb5;
+  background-blend-mode: color-burn;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position-x: 90%;
+  border-top: 1px solid #6666664a;
+  padding: 1em 6em 0em 1em;
+}
+
 
 /*---------------------------------------- Alerts */
 
 .alert-fixed {
-  position:relative; 
+  position:absolute; 
   top: 100px; 
   left: 0; 
   width: 100%;
   z-index: 2000; 
-  border-radius:0px
+  border-radius:0px;  
 }
 
 /*---------------------------------------- Mobile Menu */
@@ -449,12 +492,6 @@ a.category-badge > span.badge:hover {
 /* Media Queries---------------------------------- */
 
   @media (max-width: 576px) {
-    .container-fluid  {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: fit-content;
-    }
     h1  {
       font-size: 2rem;
     }    
@@ -549,15 +586,18 @@ a.category-badge > span.badge:hover {
 
     /* Home Banner */
     .homepage {
-      background-size:contain;
-      min-height: 90vh;
+      background-size:cover;
+      background-position-x: 70%;
+      max-height: 80vh;
+      overflow-y: scroll;
     }
   
     .main-content {
       top: 30px;
       right: 30px;
       text-align: right;
-      width: 100%;
+      width: auto;
+      height: 80vh;
     }
     .my-heading {
         font-size: 1.5rem;
@@ -584,6 +624,15 @@ a.category-badge > span.badge:hover {
       background-position-y: 120%;
     }
 
+    .description-box  {
+      max-height: 25vh;
+      overflow-y: scroll;
+      font-size: 1rem;
+      text-align: left;
+      border-left: 1px solid #6666664a;
+      padding: 1em 2em 0em 2em;
+    }
+
     .diasiete {
       padding: 10px;
     }
@@ -604,6 +653,8 @@ a.category-badge > span.badge:hover {
       font-size: smaller;
     }
 
+    footer {
+    }
   }
 
 

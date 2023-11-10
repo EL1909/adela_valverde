@@ -30,14 +30,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
-    'adelavalverde-560e226e8075.herokuapp.com'
+    '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost.8000',
-    'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
-    'https://adelavalverde-560e226e8075.herokuapp.com'
+    'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io'
     ]
 
 # Application definition
@@ -65,8 +63,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -126,16 +124,16 @@ WSGI_APPLICATION = 'adela_valverde.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(default=config('DATABASE_URL'))
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -155,12 +153,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     # ...
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -183,6 +181,8 @@ USE_TZ = True
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
