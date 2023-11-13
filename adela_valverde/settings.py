@@ -26,16 +26,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
-    '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io'
+    '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
+    'desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost.8000',
-    'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io'
+    'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
+    'https://desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/'
     ]
 
 # Application definition
