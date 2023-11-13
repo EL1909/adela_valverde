@@ -31,13 +31,13 @@ DEBUG =config('DEBUG')
 ALLOWED_HOSTS = [
     'localhost',
     '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
-    'desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/'
+    'desolate-cliffs-84301-09a6fb33b89a.herokuapp.com'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost.8000',
     'https://8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
-    'https://desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/'
+    'https://desolate-cliffs-84301-09a6fb33b89a.herokuapp.com'
     ]
 
 # Application definition
