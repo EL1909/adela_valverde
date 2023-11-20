@@ -1,21 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6">
                 <hr>
-                <h2 class="logo-font mb-4">Catalogo</h2>
+                <h2 class="logo-font">Catalogo</h2>
                 <h5 class="text-muted">Agregar producto</h5>
                 <hr>
             </div>
@@ -25,15 +17,17 @@
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
-                        {% if field.name != 'image' %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
                             {{ field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                        </div>
                     {% endfor %}
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn rounded-0" type="submit">Add Product</button>
+                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancelar</a>
+                        <button class="btn rounded-0" type="submit">Agregar Producto</button>
                     </div>
                 </form>
             </div>            
