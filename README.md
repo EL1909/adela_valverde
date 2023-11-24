@@ -1,11 +1,32 @@
 ![Avalverde](/media/readme/portada.jpg)
-
-<a href="https://desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/" target="_blank">Click here to visit the site</a>
-
-<a href="https://github.com/EL1909/adela_valverde" target="_blank">Click here to visit repository</a>
+<center><a href="https://desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/" target="_blank">Click here to visit the site</a> - <a href="https://github.com/EL1909/adela_valverde" target="_blank">Click here to visit repository</a></center>
 
 ---
-# Table of Contents for adelavalverde.com - v1
+## Table of Contents - v1
+
+- [Introduction](#Adela-Valverde)
+- [Working Methodology](#working-methodology)
+- [User Stories](#user-stories)
+- [Moscow Prioritization](#moscow-prioritization)
+- [Database Design](#database-design)
+    - [Models](#models)
+    - [Database Relationships](#database-relationships)
+- [Users Types](#users-types)
+- [CRUD Operations](#crud-operations)
+- [Features](#features)
+    - [Design and Colors](#design-and-colors)
+    - [Navigation](#navigation)
+- [Testing](#manual-testing)
+- [Project Creation Process](#project-creation-process)
+- [Deployment to Heroku](#deploy-to-heroku)
+- [Bugs](#bugs)
+    - [Unfixed](#unfixed)
+    - [Fixed](#fixed)
+- [Features to Improve](#features-to-improve)
+- [Credits](#credits)
+
+---
+
 ## [Introduction](#Adela-Valverde)
 
 This is a personal website for Adela Valverde.
@@ -140,7 +161,6 @@ All colors and fonts will be modified after customer's review.
 	- [Equipo]
     
 ## [Testing](#manual-testing)
-    
     - [Manual Testing](#manual-testing)
         - [CRUD](#crud)
         - [Messages](#messages)
@@ -160,18 +180,15 @@ All colors and fonts will be modified after customer's review.
 
 - [Deployment to Heroku](#deploy-to-heroku)
 
-- [Bugs](#bugs)
+## [Bugs](#bugs)
     - [Unfixed](#unfixed)
     - [Fixed](#fixed)
+    1. As i was trying to deploy from Heroku, only the tables for the database were being loaded but not the records. I tried different database configurations noth in settings.py and config vars in Heroku but i never managed to load the records.
+    Therefore i created new records within the deployed website, that are currently being hosted to elephantSql.
 
-- [Features to Improve](#features-to-improve)
+## [Features to Improve](#features-to-improve)
+All features to improved will be discussed and approved after customer's review.
 
-- [Credits](#credits)
-
-
-
-
-<img src="">
-
+## [Credits](#credits)
 
 ![Avalverde](/media/readme/ReadMe.png)
