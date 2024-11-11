@@ -1,28 +1,13 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block content %}
-<div class="homepage container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="main-content">
-                <div id="my-content">
-                    <h1 class="my-heading">
-                        El Silencio es tu Guru.
-                    </h1>
-                    <h4 class="my-subheading">
-                        <a href="{% url 'products' %}" class="btn">Ver Libreria</a>
-                    </h4>
-                </div>
+<div>
+    <div class="svg-container col-12">
+        <div class="svg" id="svg-content">
+            {% for svg in svgPaths %}
+            <div class="svg-item" id="svg-{{ loop.index }}">
+                {% include svg %}
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

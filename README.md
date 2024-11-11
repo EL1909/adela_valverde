@@ -2,7 +2,7 @@
 <center><a href="https://desolate-cliffs-84301-09a6fb33b89a.herokuapp.com/" target="_blank">Click here to visit the site</a> - <a href="https://github.com/EL1909/adela_valverde" target="_blank">Click here to visit repository</a></center>
 
 ---
-## Table of Contents - v1
+## Table of Contents - v2
 
 - [Introduction](#Adela-Valverde)
 - [Working Methodology](#working-methodology)
@@ -29,18 +29,19 @@
 
 ## [Introduction](#Adela-Valverde)
 
-This is a personal website for Adela Valverde.
+This is a second version of Adela Valverde's website.
 
-It's intended to handle her online activities, marketplace, blog multimedia, events -done and to do- registration and user accounts.
-
-Users of the website are able to be updated on Adela Valverde's most recent publications, They will be also able to find previous books and other content created by Adela, keep messages and request private meetings.
-
-Those that are not familiarized with her background will have access to review Adela's working and personal history, as well as those whom have make part of her pathway.
+The main goal for this V2 is to:
+    - Enable products catalog 
+    - Complete a purchase process
+    - Integrate domain www.adelavalverde.com
+    - Host website in Esfuerzo's virtual machine
+    - Adapt UI to Adela's taste
 
 
 ## [Working Methodology](#working-methodology)
 
-In order to achieve this first release, i determined tasks having in mind an Agile mindset and stablishing goals to be completed within weekly iterations.
+In order to achieve this Second release, i determined tasks having in mind an Agile mindset and stablishing goals to be completed within weekly iterations.
 
 Placing myself in the user's position, and anticipating the user's wants and needs, i made myself the following questions:
 
@@ -51,15 +52,10 @@ Placing myself in the user's position, and anticipating the user's wants and nee
 From those answers I did set up 5 issues in GitHub as User Stories.
 
 ### [User Stories](#user-stories)
-    - As a Visitor I can Create an account so that i can have a user or superuser profile.
-    - As a Visitor I can See all products and services provides by Adela so that i can purchase or acquire those services.
-    - As a Visitor I can Watch one main item on the home page so that I can easily access without surfing the site.
-    - As a Visitor I can review Adela's background so that i'm aware of her biography and other informations she wants to share.
-    - As a User I can log in and out so that Access user features.
-
-### [Moscow Prioritization](#moscow-prioritization)
-![Avalverde](/media/readme/Milestones1mvp.jpg)
-
+    - As a Visitor I can buy products and services provided by Adela.
+        - Integrate Paypal merchant
+        - Provide inventory handling
+    
 ## [Database Design](#database-design)
 ### [Models](#models)
 For the first version of thi project, I will be using four different database models for this project: User, KeyMoments, Products and Categories.

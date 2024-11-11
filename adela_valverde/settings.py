@@ -29,6 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG =config('DEBUG')
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'localhost',
     '8000-el1909-adelavalverde-n2ux2b2i5rw.ws-eu106.gitpod.io',
     'desolate-cliffs-84301-09a6fb33b89a.herokuapp.com'
