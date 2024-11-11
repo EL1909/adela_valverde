@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const menuIcon = document.getElementById("menu-icon");
     const userOptions = document.querySelector(".user-options");
-    const svgContainer = document.querySelector(".svg-container ");
-    const svgContent = document.querySelector(".svg");
+    const svgContainer = document.querySelector(".svg-container");
     
     // JavaScript to cycle through the SVGs
     let currentIndex = 0;
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Show content with a fade-in effect
     setTimeout(function() {
-        svgContainer.classList.add("show"); // Triggers the fade-in CSS transition
+        svgContainer.classList.add("show");
     }, 500); // Adjust delay as needed
     
   
@@ -46,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
     
-
+    // Timeout for messages
+    setTimeout(function () {
+      let messages = document.getElementById('msg');
+      let alert = new bootstrap.Alert(messages);
+      alert.close();
+    }, 3420);
 });
   

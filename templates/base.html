@@ -108,7 +108,7 @@
         </div>
       </div>
     </div>
-    <div class="content mundo">
+    <div class="content">
     {% block content %}
     {% endblock %}
     </div>
@@ -127,15 +127,9 @@
     {% block core_js%}
     <!-- Load local Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/custom.js' %}"></script>//
-    <script src="{% static 'js/key_moments.js' %}"></script>      
-    <script>
-      setTimeout(function () {
-        let messages = document.getElementById('msg');
-        let alert = new bootstrap.Alert(messages);
-        alert.close();
-      }, 3420);
-    </script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/key_moments.js' %}"></script>
+    <script src="{% static 'js/running_text.js' %}"></script>
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/5c47144494.js" crossorigin="anonymous"></script>
     {% endblock %}

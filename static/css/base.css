@@ -43,6 +43,8 @@ a:hover, a:active, a:focus {
   overflow: hidden;
 }
 
+
+
 /* Canva Content */
 .svg-container  {
   height: calc(100vh - 100px);
@@ -279,19 +281,72 @@ a.category-badge > span.badge:hover {
   position: fixed;
   bottom: 10px;
   right: 10px;
+  border: 2px solid #333;
 }
 
 .btn-link {
   cursor: pointer;
 }
 
-.book-description  {
-  overflow-y: scroll;
-  height:250px;
-  font-size: 1rem;
-  text-align: left;
-  border-left: 1px solid #6666664a;
-  padding: 1em 2em 0em 2em;
+/* Running Text Behavior */
+.running-text {
+  width: auto;
+  height: 250px;
+  padding: 5px;
+  border: 1px solid #8282824a;
+  border-radius: 15px;
+  cursor: pointer;
+  overflow-y: auto; /* Allows vertical scrolling */
+  position: relative;
+}
+
+.running-text p {
+  display: none,
+}
+
+.running-text :hover {
+  opacity: 0.5; /* Show when hovered */
+  pointer-events: auto; /* Re-enable interaction when shown */
+}
+
+.running-text p.active {
+  display: block;  /* Show the active paragraph */
+  opacity: 1;  /* Fully visible */
+  font-size: 1em;  /* Slightly larger font size */
+  transform: translateY(0);  /* Reset any translation */
+  z-index: 2;  /* Ensure it stays above */
+}
+
+.running-text p.inactive {
+  display: block;
+  font-size: 0.7em;
+  transform: translateY(-5px);  /* Move up slightly */
+  opacity: 0.3;  /* Dimmed */
+}
+
+/* Decorative points at the top */
+.running-text::before {
+  content: "● ● ●"; /* Three decorative points */
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7em;
+  color: rgba(86, 7, 12, 0.8); /* Change to desired color */
+}
+
+/* Decorative points at the bottom */
+.running-text::after {
+  content: "● ● ●"; /* Three decorative points */
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7em;
+  color: rgba(86, 7, 12, 0.8); /* Change to desired color */
+}
+
+.product-details-container {
+  color: #7199d0;
+
 }
 
 .buybook  {
